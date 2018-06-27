@@ -1,0 +1,75 @@
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: darkgrey;
+}
+
+.priority {
+  width: 90%;
+  border-bottom: 3px solid;
+}
+
+.priority_low {
+  width: 90%;
+  border-bottom: 3px solid;
+  border-color: green;
+}
+
+.priority_normal {
+  width: 90%;
+  border-bottom: 3px solid;
+  border-color: yellow;
+}
+
+.priority_high {
+  width: 90%;
+  border-bottom: 3px solid;
+  border-color: red;
+}
+
+.date {
+  margin: 5px;
+  padding: 2px;
+  border-radius: 10%;
+  font-size: 0.8rem;
+  background-color: green;
+}
+
+/* extends class!!! */
+.date_pastdue {
+  margin: 5px;
+  padding: 2px;
+  border-radius: 10%;
+  font-size: 0.8rem;
+  background-color: rgb(224, 103, 103);  
+}
+
+.text {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin: 0;
+  padding: 5px;
+  color: darkgrey;
+}
+
+.clock {
+  width: 16px;
+  padding-right: 10px;
+}
+
+.fullfilment {
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  border-radius: 50%;
+  border: 2px solid grey;
+  font-size: 0.75rem;
+  color: white;
+  background-color: grey;
+}
+
+

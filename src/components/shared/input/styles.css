@@ -1,0 +1,31 @@
+.input {
+  margin-right: 16px;
+  line-height: 16px;
+  height: 16px;
+  font-size: 16px;
+  font-family: inherit;
+  outline: 0;
+  padding: 4px;
+  border: none;
+  border-bottom: 1px solid grey;
+}
+
+.number {
+  display: inline-flex;
+  flex-grow: 1;
+  font-size: 16px;
+  font-family: inherit;
+  outline: 0;
+  padding: 4px;
+  padding-left: 100px;
+  border: none;
+}
+
+.input::placeholder {
+  font-weight: 400;
+  color: grey;
+}
+
+.input:focus {
+  border-color: lightgray;
+}

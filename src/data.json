@@ -1,0 +1,452 @@
+{
+  "todos": [
+    {
+      "id": "f847587f-0ec0-42fb-b9c8-ed94c052f81e",
+      "task": "Мобильная версия",
+      "status": "To do",
+      "dueDate": "2018-10-15T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "20%"
+    },
+    {
+      "id": "c1b85d76-e96d-4c80-b9c3-501ba7353e18",
+      "task": "Почтовые уведомления",
+      "status": "To do",
+      "dueDate": "2018-06-25T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "20%" 
+    },
+    { 
+      "id": "f53f080e-d321-4987-99a3-20c49627113c",
+      "task": "Внедрение модуля статистики",
+      "status": "To do",
+      "dueDate": "2018-08-15T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "20%" 
+    },
+    {
+      "id": "5fe31745-45f2-496b-b2aa-80428ed5ebd1",
+      "task": "side bar",
+      "status": "In Process",
+      "dueDate": "2018-06-21T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "20%" 
+    },
+    {
+      "id": "2b2dcb6b-49c3-4d57-8300-51f149e8bb25",
+      "task": "Тестирование",
+      "status": "In Process",
+      "dueDate": "2018-06-07T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "20%" 
+    },
+    {
+      "id": "50711e29-0fde-4990-b836-d84639551a20",
+      "task": "Оформление категорий таблицы цветом",
+      "status": "On Review",
+      "dueDate": "2018-08-01T09:10:20.499Z",
+      "priority": "high",
+      "fullfilment": "20%" 
+    },
+    {
+      "id": "898e4420-5f8f-4484-b7c3-0b826906007e",
+      "task": "Верстка сортировки",
+      "status": "On Review",
+      "dueDate": "2018-06-30T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "20%" 
+    },
+    {
+      "id": "212f687f-5161-423a-957d-b5114d754426",
+      "task": "Верстка поиска",
+      "status": "On Review",
+      "dueDate": "2018-07-08T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "20%" 
+    },
+    {
+      "id": "30b64e1e-5af3-480b-bd0d-8493e3b61d0a",
+      "task": "Создание репозитория и настройки Git для работы в команде",
+      "status": "Finished",
+      "dueDate": "2018-07-08T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "b70d91bf-f7df-4a47-ba7c-70f9ce7217e0",
+      "task": "Верстка меню",
+      "status": "Finished",
+      "dueDate": "2018-08-05T09:10:20.499Z",
+      "priority": "high",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "92badee2-982a-4706-a799-3032c8c09a43",
+      "task": "JSON файлы",
+      "status": "Finished",
+      "dueDate": "2018-04-15T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "04bd91b9-f9bb-4316-bac5-4fac25678b27",
+      "task": "Слайдер изображений (или видео)",
+      "status": "Finished",
+      "dueDate": "2018-04-25T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "faf372c8-89d7-4d8c-afe6-6f70870ec0f1",
+      "task": "Статус задания, согласно рабочему процессу.",
+      "status": "Finished",
+      "dueDate": "2018-03-15T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "100%" 
+    },
+    { 
+      "id": "19d5cdb7-fd08-4cda-a592-4ea82d579b70",
+      "task": "Шаринг в соц. Сетях",
+      "status": "Finished",
+      "dueDate": "2018-05-21T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "663c3a8d-0e7e-49fa-a451-0193e1a19a54",
+      "task": "Регистрация",
+      "status": "Finished",
+      "dueDate": "2018-04-07T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "100%" 
+    },
+    { 
+      "id": "d9d5a537-d192-4b7a-93e7-41537037c110",
+      "task": "Вертикальный скрол",
+      "status": "Finished",
+      "dueDate": "2018-05-01T09:10:20.499Z",
+      "priority": "high",
+      "fullfilment": "100%" 
+    },
+    { 
+      "id": "cb58c6a2-c070-4b77-994d-5dd8478a0357",
+      "task": "Кросс-браузерность включительно с IE11",
+      "status": "Finished",
+      "dueDate": "2018-02-30T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "b3acd955-fb3f-4fb1-a956-e619f439603e",
+      "task": "Карта с указанием места расположения",
+      "status": "Finished",
+      "dueDate": "2018-05-08T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "1a1654f5-baf4-4491-be1c-e6cb4b24a2c9",
+      "task": "Клиентская пагинация",
+      "status": "Finished",
+      "dueDate": "2018-04-08T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "becef8c5-44b0-4561-ae0f-fa67b48d0679",
+      "task": "Галерея картинок 300x300 px",
+      "status": "Finished",
+      "dueDate": "2018-03-05T09:10:20.499Z",
+      "priority": "high",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "30b64e1e-5af3-480b-bd0d-8493e3b61d33",
+      "task": "Создание репозитория и настройки Git для работы в команде",
+      "status": "Finished",
+      "dueDate": "2018-07-08T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "b70d91bf-f7df-4a47-ba7c-70f9ce721733",
+      "task": "Верстка меню",
+      "status": "Finished",
+      "dueDate": "2018-08-05T09:10:20.499Z",
+      "priority": "high",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "92badee2-982a-4706-a799-3032c8c09a33",
+      "task": "JSON файлы",
+      "status": "Finished",
+      "dueDate": "2018-04-15T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "04bd91b9-f9bb-4316-bac5-4fac25678b33",
+      "task": "Слайдер изображений (или видео)",
+      "status": "Finished",
+      "dueDate": "2018-04-25T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "faf372c8-89d7-4d8c-afe6-6f70870ec033",
+      "task": "Статус задания, согласно рабочему процессу.",
+      "status": "Finished",
+      "dueDate": "2018-03-15T09:10:20.499Z",
+      "priority": "lw",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "19d5cdb7-fd08-4cda-a592-4ea82d579b33",
+      "task": "Шаринг в соц. Сетях",
+      "status": "Finished",
+      "dueDate": "2018-05-21T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "663c3a8d-0e7e-49fa-a451-0193e1a19a33",
+      "task": "Регистрация",
+      "status": "Finished",
+      "dueDate": "2018-04-07T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "d9d5a537-d192-4b7a-93e7-41537037c133",
+      "task": "Вертикальный скрол",
+      "status": "Finished",
+      "dueDate": "2018-03-11T09:10:20.499Z",
+      "priority": "high",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "cb58c6a2-c070-4b77-994d-5dd8478a0333",
+      "task": "Кросс-браузерность включительно с IE11",
+      "status": "Finished",
+      "dueDate": "2018-02-05T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "b3acd955-fb3f-4fb1-a956-e619f4396033",
+      "task": "Карта с указанием места расположения",
+      "status": "Finished",
+      "dueDate": "2018-05-08T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "1a1654f5-baf4-4491-be1c-e6cb4b24a233",
+      "task": "Клиентская пагинация",
+      "status": "Finished",
+      "dueDate": "2018-04-08T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "becef8c5-44b0-4561-ae0f-fa67b48d0633",
+      "task": "Галерея картинок 300x300 px",
+      "status": "Finished",
+      "dueDate": "2018-03-05T09:10:20.499Z",
+      "priority": "high",
+      "fullfilment": "100%" 
+    },
+    {
+      "id": "30b64e1e-5af3-390b-bd0d-8493e3b61d0a",
+      "task": "Создание репозитория и настройки Git для работы в команде",
+      "status": "Finished",
+      "dueDate": "2018-07-08T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "b70d91bf-f7df-3947-ba7c-70f9ce7217e0",
+      "task": "Верстка меню",
+      "status": "Finished",
+      "dueDate": "2018-08-05T09:10:20.499Z",
+      "priority": "high",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "92badee2-982a-3906-a799-3032c8c09a43",
+      "task": "JSON файлы",
+      "status": "Finished",
+      "dueDate": "2018-04-15T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "04bd91b9-f9bb-3916-bac5-4fac25678b27",
+      "task": "Слайдер изображений (или видео)",
+      "status": "Finished",
+      "dueDate": "2018-04-25T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "faf372c8-89d7-398c-afe6-6f70870ec0f1",
+      "task": "Статус задания, согласно рабочему процессу.",
+      "status": "Finished",
+      "dueDate": "2018-03-15T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "19d5cdb7-fd08-39da-a592-4ea82d579b70",
+      "task": "Шаринг в соц. Сетях",
+      "status": "Finished",
+      "dueDate": "2018-05-21T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "663c3a8d-0e7e-39fa-a451-0193e1a19a54",
+      "task": "Регистрация",
+      "status": "Finished",
+      "dueDate": "2018-04-07T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "d9d5a537-d192-397a-93e7-41537037c110",
+      "task": "Вертикальный скрол",
+      "status": "Finished",
+      "dueDate": "2018-03-01T09:10:20.499Z",
+      "priority": "high",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "cb58c6a2-c070-3977-994d-5dd8478a0357",
+      "task": "Кросс-браузерность включительно с IE11",
+      "status": "Finished",
+      "dueDate": "2018-04-30T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "b3acd955-fb3f-39b1-a956-e619f439603e",
+      "task": "Карта с указанием места расположения",
+      "status": "Finished",
+      "dueDate": "2018-05-08T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "1a1654f5-baf4-3991-be1c-e6cb4b24a2c9",
+      "task": "Клиентская пагинация",
+      "status": "Finished",
+      "dueDate": "2018-04-08T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "becef8c5-44b0-3961-ae0f-fa67b48d0679",
+      "task": "Галерея картинок 300x300 px",
+      "status": "Finished",
+      "dueDate": "2018-03-05T09:10:20.499Z",
+      "priority": "high",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "30b64e1e-5af3-390b-bd0d-8493e3b61d33",
+      "task": "Создание репозитория и настройки Git для работы в команде",
+      "status": "Finished",
+      "dueDate": "2018-07-08T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "b70d91bf-f7df-3947-ba7c-70f9ce721733",
+      "task": "Верстка меню",
+      "status": "Finished",
+      "dueDate": "2018-08-05T09:10:20.499Z",
+      "priority": "high",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "92badee2-982a-3906-a799-3032c8c09a33",
+      "task": "JSON файлы",
+      "status": "Finished",
+      "dueDate": "2018-03-15T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "04bd91b9-f9bb-3916-bac5-4fac25678b33",
+      "task": "Слайдер изображений (или видео)",
+      "status": "Finished",
+      "dueDate": "2018-04-21T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "faf372c8-89d7-398c-afe6-6f70870ec033",
+      "task": "Статус задания, согласно рабочему процессу.",
+      "status": "Finished",
+      "dueDate": "2018-03-12T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "19d5cdb7-fd08-39da-a592-4ea82d579b33",
+      "task": "Шаринг в соц. Сетях",
+      "status": "Finished",
+      "dueDate": "2018-05-28T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "663c3a8d-0e7e-39fa-a451-0193e1a19a33",
+      "task": "Регистрация",
+      "status": "Finished",
+      "dueDate": "2018-04-05T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "d9d5a537-d192-397a-93e7-41537037c133",
+      "task": "Вертикальный скрол",
+      "status": "Finished",
+      "dueDate": "2018-03-30T09:10:20.499Z",
+      "priority": "high",
+      "fullfilment": "100%"
+    },
+    {
+      "id": "cb58c6a2-c070-3977-994d-5dd8478a0333",
+      "task": "Кросс-браузерность включительно с IE11",
+      "status": "Finished",
+      "dueDate": "2018-02-29T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "1000%"
+    },
+    {
+      "id": "b3acd955-fb3f-39b1-a956-e619f4396033",
+      "task": "Карта с указанием места расположения",
+      "status": "Finished",
+      "dueDate": "2018-05-14T09:10:20.499Z",
+      "priority": "low",
+      "fullfilment": "1000%"
+    },
+    {
+      "id": "1a1654f5-baf4-3991-be1c-e6cb4b24a233",
+      "task": "Клиентская пагинация",
+      "status": "Finished",
+      "dueDate": "2018-04-11T09:10:20.499Z",
+      "priority": "normal",
+      "fullfilment": "1000%"
+    },
+    {
+      "id": "becef8c5-44b0-3961-ae0f-fa67b48d0633",
+      "task": "Галерея картинок 300x300 px",
+      "status": "Finished",
+      "dueDate": "2018-03-11T09:10:20.499Z",
+      "priority": "high",
+      "fullfilment": "1000%"
+    }
+  ]
+}
