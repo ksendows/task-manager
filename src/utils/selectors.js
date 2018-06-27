@@ -2,7 +2,8 @@
 export const getVisibleTodos = ({ todos, priorityFilter, search}, statusFilter) =>
     
   todos.filter(todo => {
-    const contentMatch = todo.task.toLowerCase().includes(search);
+    const contentMatch = todo.task.toLowerCase().indexOf(search) >= 0;
+
     const statusMatch = todo.status === statusFilter;
 
     if (priorityFilter === 'all') return contentMatch && statusMatch;

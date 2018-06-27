@@ -42,6 +42,10 @@ export default class Form extends Component {
 
   constructor(props) {
     super(props);
+
+    this.textArea = React.createRef();
+    this.focusTextArea = this.focusTextArea.bind(this);
+
     if (props.action === "edit") {
       this.state = {
         id: props.todo.id,
@@ -57,9 +61,17 @@ export default class Form extends Component {
     this.state = { ...INITIAL_STATE };
     if (props.list) this.state.status = props.list;
   };
-  
+
+  componentDidMount() {
+    this.focusTextArea();
+  }
+
   onRadioChange = (property, value) => {
     this.setState({ [property]: value });
+  }
+
+  focusTextArea() {
+    this.textArea.current.focus();
   }
 
   handleAddSubmit = e => {
@@ -138,9 +150,10 @@ export default class Form extends Component {
           name="task" 
           placeholder="Todo description" 
           rows = "5"
+          ref={this.textArea}
           value={this.state.task} 
           onChange={this.handleInputChange}
-          className={styles.form_text}/>
+          className={styles.form_text} />
 
         <div className={styles.columns_container}>
           <PropertySelect

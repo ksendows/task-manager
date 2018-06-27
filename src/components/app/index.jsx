@@ -4,7 +4,6 @@ import Modal from 'react-modal';
 import Menu from "../menu/";
 import PriorityFilter from "../priorityFilter";
 import Button from '../shared/button/';
-import Loader from '../shared/loader';
 import Panel from '../panel/';
 import Form from "../form";
 import Search from "../search";
@@ -20,7 +19,6 @@ class App extends Component {
         todos: data.todos,
         search: '',
         priorityFilter: 'all',
-        isLoading: false,
         showModal: false,
         modalAction: '',
         activeTodo: {},
@@ -44,9 +42,7 @@ class App extends Component {
   }));
 
   addTodo = (todo) => {
-    this.setState({ isLoading: true });
     this.setState(prevState => ({
-      isLoading: false,    
       todos: [todo, ...prevState.todos],
     }));
   };
@@ -71,8 +67,7 @@ class App extends Component {
 
   render() {
 
-    const { isLoading, showModal, priorityFilter, search, 
-        activeTodo, modalAction, activeList  } = this.state;
+    const { showModal, priorityFilter, search, activeTodo, modalAction, activeList  } = this.state;
 
     const visibleTodos = getVisibleTodos(this.state, "To do");
     const visibleOnReview = getVisibleTodos(this.state, "On Review");
@@ -94,7 +89,6 @@ class App extends Component {
           changePriorityFilter={this.handlePriorityFilterChange}
           currentFilter={priorityFilter} />
 
-        {isLoading && <Loader width={80} height={80} />}
         <div className={styles.container}>
 
           <Panel 
