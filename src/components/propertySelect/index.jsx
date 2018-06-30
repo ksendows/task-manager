@@ -60,7 +60,7 @@ export default class PropertySelect extends Component {
         <div>
             <Button 
                 onClick={this.handleToggleLink} 
-                type="toggleLink">
+                type="buttonHover">
                 {`${property}: ${this.state[property]}`}
             </Button>
             {this.state.isOpen && <div className={styles.select_container}>

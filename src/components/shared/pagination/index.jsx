@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from "../button";
@@ -13,7 +12,9 @@ const Pagination = ({ currentPage, totalPages, onSwitchPages }) => {
         e.preventDefault();
         if (e.target.textContent === "...") return;
 
-        const nextPage = Number.parseInt(e.target.textContent);
+        if (Number.parseInt === undefined)
+            Number.parseInt = window.parseInt;
+        const nextPage = Number.parseInt(e.target.textContent, 10);
         onSwitchPages(nextPage);
     }
 
@@ -30,7 +31,7 @@ const Pagination = ({ currentPage, totalPages, onSwitchPages }) => {
     }
 
     const pagesToShow = getPagesToShow(currentPage, totalPages);
-    // debugger;
+    
     return (
         <div className={styles.container}>
             <div className={styles.arrow_left}>
@@ -41,7 +42,9 @@ const Pagination = ({ currentPage, totalPages, onSwitchPages }) => {
                     <a 
                         link="#" 
                         className={currentPage === page ? styles.page_number_active : styles.page_number}
-                        onClick={handleSwitchPages}>
+                        onClick={handleSwitchPages}
+                        role="presentation"
+                        key={page}>
                         {page}
                     </a>
                 </div>))}
@@ -53,6 +56,12 @@ const Pagination = ({ currentPage, totalPages, onSwitchPages }) => {
 }
 
 export default Pagination;
+
+Pagination.propTypes = {
+    onSwitchPages: PropTypes.func.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    totalPages: PropTypes.number.isRequired
+};
 
 
 

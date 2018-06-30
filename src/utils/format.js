@@ -50,3 +50,4 @@ export const formatDateForInput = (date) => {
     const formatedDate = `${date.getFullYear()}-${format(date.getMonth()+1)}-${format(date.getDate())}`;
     return formatedDate;
 };
+

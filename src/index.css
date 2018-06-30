@@ -4,5 +4,6 @@ body {
   font-family: sans-serif;
   background-image: url('./backgrounds/photo1');
   background-size: cover;
+  background-position: center;
 }
 

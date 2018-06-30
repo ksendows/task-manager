@@ -16,7 +16,12 @@ export const getVisibleTodos = ({ todos, priorityFilter, search}, statusFilter) 
 
 export const getPagesToShow = (currentPage, totalPages) => {
 
-  const pagesNumbers = Array.from({ length: totalPages }, (v, i) => i + 1);
+  // const pagesNumbers = Array.from({ length: totalPages }, (v, i) => i + 1);
+  const pagesNumbers = [];
+
+  for (let i = 1; i <= totalPages; i += 1) {
+    pagesNumbers.push(i);
+  }
 
   const startPage = (currentPage <= 3) ? 0 : currentPage - 2;
   const endPage = (currentPage <= totalPages - 3) ? currentPage + 1 : totalPages;

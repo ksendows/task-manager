@@ -1,0 +1,48 @@
+.sorting_wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.sorting_list {
+  position: absolute;
+  top: 0;
+  right: 0%;
+  width: 200px;
+  border: 2px solid rgba(223, 217, 217);
+  border-radius: 2%;
+  background-color: rgba(223, 217, 217);
+}
+
+.sorting_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sorting_title {
+  margin: 5px 0;
+  padding: 0px 10px;
+  text-decoration: underline;
+}
+
+.iconClose {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  padding: 5px;
+}
+
+.open_options {
+  position: absolute;
+  top: 0;
+  right: 13px;
+  width: 20px;
+  height: 20px;
+  padding: 5px 10px 14px;
+  font-size: 2em;
+  color: grey;
+}
+

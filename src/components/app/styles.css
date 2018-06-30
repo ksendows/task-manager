@@ -1,20 +1,7 @@
-.header {
-  display: flex;
-  width: 100%;
-  height: 50px;
-  padding: 5px;
-  background-color: rgba(223, 217, 217, 0.774);
-}
-
-.title {
-  margin: 0;
-  text-align: center;
-}
-
 .container {
   display: flex;
   flex-direction: row;
-  min-height: 100px;
+  min-height: calc(100vh - 160px);
   padding: 15px;
 }
 
@@ -28,12 +15,12 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 350px;
-  max-width: 90%;
-  min-height: 200px;
+  width: 50%;
+  max-width: 1000px;
+  min-width: 270px;
   transform: translate(-50%, -50%);
   padding: 5px;
-  margin: 10px;
+  /* margin: 10px; */
   outline: 0;
   border: 2px solid rgba(223, 217, 217, 0.774);
   border-radius: 2%;
@@ -44,5 +31,26 @@
 .iconClose {
   width: 16px;
   height: 16px;
+}
+
+.modal_map {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 95%;
+  max-width: 1000px;
+  min-width: 270px;
+  transform: translate(-50%, -50%);
+  padding: 5px;
+  outline: 0;
+  border: 2px solid rgba(223, 217, 217, 0.774);
+  border-radius: 2%;
+  background-color: rgba(223, 217, 217, 0.774);
+  box-shadow: 3px 3px 12px -4px rgba(0,0,0,0.69);
+}
+.map {
+  width: 95%;
+  height: 90%;
 }
 

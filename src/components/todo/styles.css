@@ -5,27 +5,19 @@
   color: darkgrey;
 }
 
-.priority {
-  width: 90%;
-  border-bottom: 3px solid;
-}
-
 .priority_low {
   width: 90%;
-  border-bottom: 3px solid;
-  border-color: green;
+  border-bottom: 3px solid green;
 }
 
 .priority_normal {
   width: 90%;
-  border-bottom: 3px solid;
-  border-color: yellow;
+  border-bottom: 3px solid rgb(255, 255, 29);
 }
 
 .priority_high {
   width: 90%;
-  border-bottom: 3px solid;
-  border-color: red;
+  border-bottom: 3px solid red;
 }
 
 .date {
@@ -40,7 +32,7 @@
 .date_pastdue {
   margin: 5px;
   padding: 2px;
-  border-radius: 10%;
+  border-radius: 5%;
   font-size: 0.8rem;
   background-color: rgb(224, 103, 103);  
 }
@@ -60,13 +52,20 @@
   padding-right: 10px;
 }
 
+.fullfilment_container {
+  width: 35%;
+  height: 24px;
+  background-color: lightgray;
+  
+}
+
 .fullfilment {
-  width: 28px;
-  height: 28px;
-  line-height: 28px;
+  /* width: 20%; */
+  height: 24px;
+  line-height: 24px;
   text-align: center;
-  border-radius: 50%;
-  border: 2px solid grey;
+  /* border-radius: 50%;
+  border: 2px solid grey; */
   font-size: 0.75rem;
   color: white;
   background-color: grey;

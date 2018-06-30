@@ -7,17 +7,17 @@ import Button from '../shared/button/';
 import clockIcon from '../../icons/clock.svg';
 import styles from './styles.css';
 
-let dueDate = new Date();
-dueDate = dueDate.setDate(dueDate.getDate() + 1);
-dueDate = new Date(JSON.parse(JSON.stringify(dueDate)));
+const date = new Date();
+const defaultDueDate = date.setDate(date.getDate(date) + 1);
 
 const INITIAL_STATE = {
   task: '',
-  dueDate: formatDateForInput(dueDate),
+  dueDate: formatDateForInput(new Date(JSON.parse(JSON.stringify(defaultDueDate)))),
   status: "To do",
   editableStatus: false,
   priority: "low",
   editablePriority: false,
+  fullfilment: 0
 };
 
 export default class Form extends Component {
@@ -33,6 +33,8 @@ export default class Form extends Component {
       status: PropTypes.string,
       priority: PropTypes.string,
       dueDate: PropTypes.string,
+      creationDate: PropTypes.string,
+      fullfilment: PropTypes.string
     })
   };
 
@@ -46,15 +48,22 @@ export default class Form extends Component {
     this.textArea = React.createRef();
     this.focusTextArea = this.focusTextArea.bind(this);
 
+    const {id, task, dueDate, creationDate, status, priority, fullfilment} = props.todo;
+
+    // if (Number.parseInt === undefined)
+    //   Number.parseInt = window.parseInt;
+    
     if (props.action === "edit") {
       this.state = {
-        id: props.todo.id,
-        task: props.todo.task,
-        dueDate: formatDateForInput(new Date(JSON.parse(JSON.stringify(props.todo.dueDate)))),
-        status: props.todo.status,
+        id,
+        task,
+        dueDate: formatDateForInput(new Date(JSON.parse(JSON.stringify(dueDate)))),
+        creationDate,
+        status,
         editableStatus: false,
-        priority: props.todo.priority,
+        priority,
         editablePriority: false,
+        fullfilment: Number.parseInt(fullfilment, 10)
       }
       return;
     }
@@ -82,9 +91,11 @@ export default class Form extends Component {
     const todo = {
       id: v4(),
       task: this.state.task,
-      dueDate: this.state.dueDate,
+      dueDate: JSON.parse(JSON.stringify(new Date(this.state.dueDate))),
+      creationDate: JSON.parse(JSON.stringify(new Date())),
       status: this.state.status,
-      priority: this.state.priority
+      priority: this.state.priority,
+      fullfilment: `${this.state.fullfilment}%`
     }
     this.props.onAddTodo(todo);
 
@@ -100,9 +111,11 @@ export default class Form extends Component {
     const updatedTodo = {
       id: this.state.id,
       task: this.state.task,
-      dueDate: this.state.dueDate,
+      dueDate: JSON.parse(JSON.stringify(new Date(this.state.dueDate))),
+      creationDate: JSON.parse(JSON.stringify(new Date(this.state.creationDate))),
       status: this.state.status,
-      priority: this.state.priority
+      priority: this.state.priority,
+      fullfilment: `${this.state.fullfilment}%`
     }
     this.props.onEditTodo(updatedTodo);
 
@@ -149,37 +162,67 @@ export default class Form extends Component {
         <textarea 
           name="task" 
           placeholder="Todo description" 
-          rows = "5"
+          rows = "8"
           ref={this.textArea}
           value={this.state.task} 
           onChange={this.handleInputChange}
           className={styles.form_text} />
 
         <div className={styles.columns_container}>
-          <PropertySelect
-            property="status"
-            onRadioChange={this.onRadioChange}
-            value={this.state.status} />
-          <PropertySelect
-            property="priority"
-            onRadioChange={this.onRadioChange}
-            value={this.state.priority} />
+          <div className={styles.column}>
+            <PropertySelect
+              property="status"
+              onRadioChange={this.onRadioChange}
+              value={this.state.status} />
+          </div>
+
+          <div className={styles.column}>
+            <PropertySelect
+              property="priority"
+              onRadioChange={this.onRadioChange}
+              value={this.state.priority} />
+          </div>
         </div>
 
-        <div className={styles.date_container}>
-          <img src={clockIcon} alt="" className={styles.clock} />
-          <input
-            type="date"
-            name="dueDate"
-            value={this.state.dueDate}
-            onChange={this.handleInputChange}
-            className={styles.date_input} />
+        <div className={styles.columns_container}>
+          <div className={styles.column}>
+              <label htmlFor="dueDate" className={styles.date_container}>
+                <img src={clockIcon} alt="" className={styles.clock} />
+                <input
+                  type="date"
+                  id="dueDate"
+                  name="dueDate"
+                  value={this.state.dueDate}
+                  onChange={this.handleInputChange}
+                  className={styles.date_input} />
+              </label>
+          </div>
+
+          <div className={styles.column}>
+            <label htmlFor="fullfilment" className={styles.fullfilment}>Fullfilment (%):
+              <input
+                    type="number"
+                    id="fullfilment"
+                    name="fullfilment"
+                    value={this.state.fullfilment}
+                    onChange={this.handleInputChange}
+                    className={styles.fullfilment_input}
+                    placeholder="0"
+                    min="0" max="100"
+                    step="1" />
+            </label>
+          </div>
         </div>
 
-        <div className={styles.actions}>
-          <Button type="submit" onClick={submitFunc}>{submitTitle}</Button>
-          <Button onClick={this.handleCloseModal}>Cancel</Button>
+        <div className={styles.columns_container}>
+          <div className={styles.column}>
+            <Button type="submit" onClick={submitFunc}>{submitTitle}</Button>
+          </div>
+          <div className={styles.column}>
+            <Button onClick={this.handleCloseModal}>Cancel</Button>
+          </div>
         </div>
+
       </form>
       );
     }

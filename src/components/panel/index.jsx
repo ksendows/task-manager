@@ -1,10 +1,9 @@
-/*eslint-disable*/
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import List from '../list/';
+import List from '../list';
+import Sorting from '../sorting';
 import Pagination from '../shared/pagination';
 import Button from "../shared/button";
-import sortIcon from '../../icons/sort.svg';
 import sortByDate from "../../utils/sorting";
 import styles from './styles.css';
 
@@ -28,42 +27,36 @@ export default class Panel extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isSorted: false,
+            sortBy: { sortBy: "dueDate", direction: true },
             isPaginated: false,
             currentPage: 1
         };
     }
 
-    handleSortByDate = () => (
-        this.setState(prevState => ({
-            isSorted: !prevState.isSorted
-        })));
+    handleSort = (sortMethod) => this.setState({ sortBy: sortMethod });
 
     handleSwitchPages = (nextPage) => this.setState({ currentPage: nextPage});
 
     render () {
 
-        // debugger;
         const { title, todos, onDeleteTodo, onAddTodo, onEditTodo } = this.props;
+        const { currentPage, sortBy } = this.state;
 
         const isPaginated = todos.length > ROWS_PER_PAGE;
 
-        let visibleTodos = this.state.isSorted ? sortByDate(todos) : todos;
+        let visibleTodos = sortByDate(todos, sortBy);
 
-        const startRow = (this.state.currentPage - 1) * ROWS_PER_PAGE;
-        const endRow = this.state.currentPage * ROWS_PER_PAGE;
+        const startRow = (currentPage - 1) * ROWS_PER_PAGE;
+        const endRow = currentPage * ROWS_PER_PAGE;
         const totalPages = Math.ceil(todos.length / ROWS_PER_PAGE);
 
         if (isPaginated) visibleTodos = visibleTodos.slice(startRow, endRow);
 
         return (
         <div className={styles.panel}>
-            <h2 className={styles.title}>{title}</h2>
-            <div className={this.state.isSorted ? styles.icon_wrapper_transformed : styles.icon_wrapper}>
-                <Button
-                    onClick={this.handleSortByDate}
-                    type="icon"
-                    src={sortIcon} />
+            <div className={styles.header}>
+                <h2 className={styles.title}>{title}</h2>
+                <Sorting onSort={this.handleSort} activeMethod={sortBy}/>
             </div>
             <List
                 data={visibleTodos}
@@ -71,14 +64,15 @@ export default class Panel extends Component {
                 onEditTodo={onEditTodo} />
             {isPaginated && 
                 <Pagination 
-                    currentPage={this.state.currentPage} 
+                    currentPage={currentPage} 
                     totalPages={totalPages}
                     onSwitchPages={this.handleSwitchPages}/>}
-            <Button onClick={onAddTodo} type="linkButton">Add a task...</Button>
+            <Button onClick={onAddTodo} type="buttonHover">Add a task...</Button>
         </div>
         );
     }
 }
+
 
 
 

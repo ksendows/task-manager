@@ -16,7 +16,7 @@ const PriorityFilter = ({ currentFilter, changePriorityFilter}) => (
 
 PriorityFilter.propTypes = {
     changePriorityFilter: PropTypes.func.isRequired,
-    currentFilter: PropTypes.string.isRequired,
+    currentFilter: PropTypes.oneOf(['all', 'low', 'normal', 'high']).isRequired
 };
 
 export default PriorityFilter;

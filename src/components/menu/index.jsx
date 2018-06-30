@@ -1,50 +1,33 @@
 /*eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from '../shared/button';
+import settings from '../../icons/settings.svg';
+import login from '../../icons/login.svg';
 import styles from './styles.css';
 
-const Menu = ({ data, ...props }) => (
+const Menu = ({ onAddTodo }) => (
     <nav>
-        <ul className={styles.menu_mobile_close}>
+        <ul className={styles.menu}>
             <li className={styles.menu_item}>
-                <a href="#" className={styles.menu_item_link}>Tasks</a>
+                <Button type="menuItem" onClick={onAddTodo}>+</Button>
             </li>
             <li className={styles.menu_item}>
-                <a href="#" className={styles.menu_item_link}>Members</a>
+                <Button type="menuItem" src={settings}></Button>
             </li>
             <li className={styles.menu_item}>
-                <a href="#" className={styles.menu_item_link}>Settings</a>
+                <Button type="menuItem">i</Button>
             </li>
             <li className={styles.menu_item}>
-                <a href="#" className={styles.menu_item_link}>Contacts</a>
-            </li>
-            <li className={styles.menu_item}>
-                <a href="#" className={styles.menu_item_link}>Tutorial</a>
+                <Button type="menuItem" src={login}></Button>
             </li>
         </ul>
-        <div className={styles.burger_menu}>
-            <div className={styles.burger_menu_icon}></div>
-            <div className={styles.burger_menu_icon}></div>
-            <div className={styles.burger_menu_icon}></div>
-        </div>
     </nav>
-    //   <ul className={styles.list}>
-//     {data.map(item => (
-//       <li key={item.id} className={styles.item}>
-//           <Todo {...item} {...props} />
-//       </li>
-//     ))}
-//   </ul>
 );
 
 
-// List.propTypes = {
-//   data: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//     }).isRequired,
-//   ).isRequired
-// };
+Menu.propTypes = {
+    onAddTodo: PropTypes.func.isRequired
+};
 
 export default Menu;
-

@@ -35,6 +35,10 @@ const Todo = ({ id, task, dueDate, priority, fullfilment, onDeleteTodo, onEditTo
 
   const handleEdit = () => onEditTodo(id);
 
+  const fullfillmentStyleWidth = {
+    width: fullfilment
+  };
+
   return (
     <div className={styles.todo} onClick={handleEdit} role="presentation">
       <div className={priorityClass} />
@@ -44,7 +48,9 @@ const Todo = ({ id, task, dueDate, priority, fullfilment, onDeleteTodo, onEditTo
           <img src={clockIcon} alt="" className={styles.clock} />
           <span dateTime={date}>{formatedDate}</span>
         </div>
-        <div className={styles.fullfilment}>{fullfilment}</div>
+        <div className={styles.fullfilment_container}>
+          <div className={styles.fullfilment} style={fullfillmentStyleWidth}>{fullfilment}</div>
+        </div>
         <Button onClick={handleDelete} type="icon" src={deleteIcon} />
       </div>
     </div>

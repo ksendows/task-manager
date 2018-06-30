@@ -5,11 +5,8 @@ import styles from './styles.css';
 const Button = ({ children, onClick, type, src }) => {
   let btnClass;  
   switch (type) {
-      case "linkButton": 
-        btnClass = styles.linkButton;
-        break;
-      case "toggleLink":
-        btnClass = styles.toggleLink;
+      case "buttonHover": 
+        btnClass = styles.buttonHover;
         break;
       case "modalClose": 
         btnClass = styles.modalClose;
@@ -17,7 +14,19 @@ const Button = ({ children, onClick, type, src }) => {
       case "icon":
         btnClass = styles.icon;
         break;
-      default:
+      case "listLink":
+        btnClass = styles.listLink;
+        break;
+    case "listLinkActive":
+        btnClass = styles.listLinkActive;
+        break;
+    case "mapLink":
+        btnClass = styles.mapLink;
+        break;
+    case "menuItem":
+      btnClass = styles.menuItem;
+      break;
+    default:
         btnClass = styles.button;
     };
 
