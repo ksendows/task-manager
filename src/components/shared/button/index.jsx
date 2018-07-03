@@ -3,36 +3,45 @@ import PropTypes from 'prop-types';
 import styles from './styles.css';
 
 const Button = ({ children, onClick, type, src }) => {
-  let btnClass;  
+  let btnClass; 
+  let iconClass = styles.icon;
   switch (type) {
-      case "buttonHover": 
-        btnClass = styles.buttonHover;
-        break;
-      case "modalClose": 
-        btnClass = styles.modalClose;
-        break;
-      case "icon":
-        btnClass = styles.icon;
-        break;
-      case "listLink":
-        btnClass = styles.listLink;
-        break;
+    case "buttonDisabled":
+      btnClass = styles.button_disabled;
+      break;
+    case "buttonHover": 
+      btnClass = styles.buttonHover;
+      break;
+    case "modalClose": 
+      btnClass = styles.modalClose;
+      iconClass = styles.iconClose;
+      break;
+    case "icon":
+      btnClass = styles.icon;
+      break;
+    case "listLink":
+      btnClass = styles.listLink;
+      break;
     case "listLinkActive":
-        btnClass = styles.listLinkActive;
-        break;
+      btnClass = styles.listLinkActive;
+      break;
     case "mapLink":
-        btnClass = styles.mapLink;
-        break;
+      btnClass = styles.mapLink;
+      break;
     case "menuItem":
       btnClass = styles.menuItem;
       break;
+    case "menuBack":
+      btnClass = styles.menuBack;
+      iconClass = styles.iconClose;
+      break;
     default:
-        btnClass = styles.button;
+      btnClass = styles.button;
     };
 
     if (src) return (
       <div className={btnClass} onClick={onClick} role="presentation">
-        <img src={src} className={styles.icon} alt="icon" />
+        <img src={src} className={iconClass} alt="icon" />
       </div>);
     
     return (

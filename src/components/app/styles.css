@@ -1,14 +1,12 @@
+@value primary-color-transparent, primary-color-solid from '../../styles/variables.css';
+
 .container {
+  position: relative;
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
   min-height: calc(100vh - 160px);
   padding: 15px;
-}
-
-@media screen and (max-width: 780px) {
-  .container {
-    flex-wrap: wrap;
-  }
 }
 
 .modal {
@@ -17,40 +15,36 @@
   left: 50%;
   width: 50%;
   max-width: 1000px;
-  min-width: 270px;
+  min-width: 500px;
   transform: translate(-50%, -50%);
   padding: 5px;
-  /* margin: 10px; */
   outline: 0;
-  border: 2px solid rgba(223, 217, 217, 0.774);
+  border: 2px solid primary-color-solid;
   border-radius: 2%;
-  background-color: rgba(223, 217, 217, 0.774);
+  background-color: primary-color-solid;
   box-shadow: 3px 3px 12px -4px rgba(0,0,0,0.69);
-}
-
-.iconClose {
-  width: 16px;
-  height: 16px;
 }
 
 .modal_map {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  composes: modal;
   width: 80%;
   height: 95%;
-  max-width: 1000px;
-  min-width: 270px;
-  transform: translate(-50%, -50%);
-  padding: 5px;
-  outline: 0;
-  border: 2px solid rgba(223, 217, 217, 0.774);
-  border-radius: 2%;
-  background-color: rgba(223, 217, 217, 0.774);
-  box-shadow: 3px 3px 12px -4px rgba(0,0,0,0.69);
 }
 .map {
   width: 95%;
   height: 90%;
+}
+
+@media screen and (max-width: 970px) {
+  .container {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .modal {
+    width: 90%;
+    min-width: 280px;
+  }
 }
 

@@ -7,7 +7,7 @@ import twitter from '../../icons/twitter.svg';
 import styles from './styles.css';
 
 const Footer = ({ onShowMap }) => (
-        <footer className={styles.footer}>
+        <footer className={styles.container}>
             <div className={styles.column}>
                 <p>TASK MANAGER</p>
                 <adress className={styles.info}>Adress: Kiev, Politechnicheskaya&nbsp;Str.&nbsp;6</adress>

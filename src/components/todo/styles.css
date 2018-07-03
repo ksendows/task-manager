@@ -1,8 +1,14 @@
+@value font-color, font-color-todo from '../../styles/variables.css';
+
+.todo {
+  cursor: pointer;
+}
+
 .info {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: darkgrey;
+  color: white;
 }
 
 .priority_low {
@@ -28,7 +34,6 @@
   background-color: green;
 }
 
-/* extends class!!! */
 .date_pastdue {
   margin: 5px;
   padding: 2px;
@@ -44,7 +49,7 @@
   flex-grow: 1;
   margin: 0;
   padding: 5px;
-  color: darkgrey;
+  color: font-color;
 }
 
 .clock {
@@ -53,6 +58,7 @@
 }
 
 .fullfilment_container {
+  position: relative;
   width: 35%;
   height: 24px;
   background-color: lightgray;
@@ -60,15 +66,21 @@
 }
 
 .fullfilment {
-  /* width: 20%; */
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 24px;
   line-height: 24px;
   text-align: center;
-  /* border-radius: 50%;
-  border: 2px solid grey; */
   font-size: 0.75rem;
   color: white;
-  background-color: grey;
+  background-color: font-color-todo;
+}
+
+.fullfilment_title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 

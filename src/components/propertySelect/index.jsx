@@ -22,6 +22,11 @@ export default class PropertySelect extends Component {
             isOpen: false
         };
     };
+
+    componentDidMount = () => {
+        if (window.window.innerWidth >= 470) { 
+            this.setState({ isOpen: true }); 
+    }};
     
     handleRadioChange = e => {
         const name = e.target.name;
@@ -43,6 +48,7 @@ export default class PropertySelect extends Component {
                     name={name}
                     value={value}
                     id={value}
+                    className={styles.property}
                     checked={this.state[name] === value}
                     onChange={this.handleRadioChange} />
                 {value}
@@ -63,9 +69,9 @@ export default class PropertySelect extends Component {
                 type="buttonHover">
                 {`${property}: ${this.state[property]}`}
             </Button>
-            {this.state.isOpen && <div className={styles.select_container}>
-                            {data.map(value => this.renderRadioInput(property, value))}
-                        </div>
+            {this.state.isOpen && <div className={styles.properties_container}>
+                        {data.map(value => this.renderRadioInput(property, value))}
+                    </div>
             }
         </div>
 )};

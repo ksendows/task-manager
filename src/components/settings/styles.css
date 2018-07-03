@@ -1,0 +1,41 @@
+@value primary-color-solid, font-color from '../../styles/variables.css';
+
+.container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30%;
+    max-width: 100%;
+    max-height: calc(100vh - 56px);
+    padding: 5px 10px;
+    background-color: primary-color-solid;
+    z-index: 10;
+    transform: translate(100%, 0%);
+    transition: transform 200ms linear;
+}
+
+.title {
+    margin: 8px;
+    text-align: center;
+    color: font-color;
+}
+
+.menu_list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .container {
+        width: 86vw;
+    }
+}
+
+

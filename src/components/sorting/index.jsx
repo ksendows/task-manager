@@ -63,13 +63,13 @@ export default class Sorting extends Component {
 
     render () {
         return (
-            <div className={styles.sorting_wrapper}>
+            <div className={styles.wrapper}>
 
                 {this.state.isOpen &&
-                    <div className={styles.sorting_list}>
+                    <div className={styles.list}>
 
-                        <div className={styles.sorting_header}>
-                            <p className={styles.sorting_title}>Sort by:</p>
+                        <div className={styles.header}>
+                            <p className={styles.title}>Sort by:</p>
                             <Button onClick={this.handleShowSortOptions} type="icon">
                                 <img src={closeIcon} alt="" className={styles.iconClose} />
                             </Button>

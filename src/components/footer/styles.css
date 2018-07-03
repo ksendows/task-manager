@@ -1,12 +1,14 @@
-.footer {
+@value primary-color, font-color, font-color-todo from '../../styles/variables.css';
+
+.container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: 0 auto;
   padding: 0 3% 10px;
   font-size: 0.9rem;
-  color: grey;
-  background-color: rgba(223, 217, 217, 0.6);
+  color: font-color;
+  background-color: primary-color;
 }
 
 .column {
@@ -15,13 +17,13 @@
 
 .info {
   display: block;
-  color: grey;
+  color: font-color;
   text-decoration: none;
 }
 
 .map {
-  text-decoration: underline grey;
-  color: grey;
+  text-decoration: underline font-color;
+  color: font-color;
 }
 
 .title {
@@ -57,24 +59,27 @@
   display: block;
   width: 100%;
   height: 100%;
-  background-color: grey;
+  background-color: font-color-todo;
   border-radius: 5%;
 }
 
 .author {
   display: block;
-  text-decoration: underline grey;
-  color: grey;
+  text-decoration: underline font-color;
+  color: font-color;
   text-align: center;
 }
 
-/* .logo_container:active, .logo_container:hover {
-  background-color: white;
-}
-.logo:active>svg path, .logo:hover>svg path{
-  fill: grey;
-}
+@media screen and (max-width: 620px) {
+  .container {
+    flex-wrap: wrap;
+  }
 
-.logo_container:active path, .logo_container:hover path{
-  fill: grey;
-} */
+  .column {
+    width: 100%;
+  }
+
+  .column > * {
+    text-align: center;
+  }
+}

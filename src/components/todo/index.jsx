@@ -49,7 +49,8 @@ const Todo = ({ id, task, dueDate, priority, fullfilment, onDeleteTodo, onEditTo
           <span dateTime={date}>{formatedDate}</span>
         </div>
         <div className={styles.fullfilment_container}>
-          <div className={styles.fullfilment} style={fullfillmentStyleWidth}>{fullfilment}</div>
+          <div className={styles.fullfilment} style={fullfillmentStyleWidth} />
+          <div className={styles.fullfilment_title}>{fullfilment}</div>
         </div>
         <Button onClick={handleDelete} type="icon" src={deleteIcon} />
       </div>

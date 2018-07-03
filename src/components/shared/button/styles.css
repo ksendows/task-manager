@@ -1,3 +1,5 @@
+@value primary-color, primary-color-transparent, font-color, font-color-todo, box-shadow, box-shadow-hover from '../../../styles/variables.css';
+
 .button {
   display: block;
   width: 160px;
@@ -11,10 +13,9 @@
   font-size: 1rem;
   text-transform: uppercase;
   font-family: inherit;
-  background-color: #808080;
+  background-color: grey;
   outline: none;
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: box-shadow;
   transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1),
     background-color 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
@@ -22,17 +23,27 @@
 
 .button:hover,
 .button:focus {
-  background-color: grey;
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
-    0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  background-color: font-color;
+  box-shadow: box-shadow-hover;
 }
+
+.button_disabled {
+  composes: button;
+  background-color: font-color-todo;
+}
+
+.button_disabled:hover,
+.button_disabled:focus {
+  background-color: font-color-todo;
+}
+
 .buttonHover {
   composes: button;
   width: 100%;
   margin: 5px 0;
-  color: black;
+  color: font-color;
   text-align: left;
-  background-color: rgba(223, 217, 217, 0);
+  background-color: primary-color-transparent;
   text-transform: none;
   box-shadow: none;
 }
@@ -40,29 +51,35 @@
 .buttonHover:hover,
 .buttonHover:focus {
   text-decoration: underline;
-  background-color: rgba(223, 217, 217, 0.6);
+  background-color: primary-color;
 }
 
 .listLink {
   composes: buttonHover;
   min-height: 24px;
+  font-size: 0.9rem;
+}
+
+.listLink:hover,
+.listLink:focus {
+  text-decoration: none;
 }
 
 .listLinkActive {
   composes: listLink;
-  text-decoration: underline;
+  font-weight: 700;
 }
 
 .mapLink {
   composes: listLinkActive;
   min-height: 36px;
   padding: 0px;
-  color: grey;
+  color: font-color;
 }
 
 .mapLink:hover,
 .mapLink:focus {
-  background-color: rgba(223, 217, 217, 0);
+  background-color: primary-color-transparent;
   box-shadow: none;
 }
 
@@ -77,16 +94,15 @@
   font-size: 28px;
   font-weight: 900;
   font-family: inherit;
-  background-color: rgba(223, 217, 217, 0);
+  background-color: primary-color-transparent;
   outline: none;
   cursor: pointer;
 }
 
 .menuItem:hover,
 .menuItem:focus {
-  background-color: rgba(223, 217, 217, 0.774);
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
-    0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  background-color: primary-color;
+  box-shadow: box-shadow-hover;
 }
 
 .menuItem>img {
@@ -95,12 +111,19 @@
 }
 
 .modalClose {
-  position: fixed;
+  position: absolute;
   top: 0;
-  right: 0;
-  padding: 2px;
-  background-color: rgba(223, 217, 217, 0.774);
+  right: 10px;
+  padding: 5px;
+  background-color: primary-color;
   border: 0;
+}
+
+.menuBack {
+  composes: modalClose;
+  left: 10px;
+  right: 0;
+  width: 16px;
 }
 
 .icon {
@@ -111,5 +134,19 @@
   border: none;
   outline: none;  
   cursor: pointer;
+}
+
+.iconClose {
+  width: 16px;
+  height: 16px;
+}
+
+@media screen and (max-width: 470px) {
+  .button {
+    width: 130px;
+  }
+  .buttonHover {
+    width: 100%;
+  }
 }
 

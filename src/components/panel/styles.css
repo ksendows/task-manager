@@ -1,3 +1,5 @@
+@value primary-color from '../../styles/variables.css';
+
 .panel {
   position: relative;
   width: 25%;
@@ -7,9 +9,9 @@
   flex-grow: 1;
   padding: 5px;
   margin: 10px;
-  border: 2px solid rgba(223, 217, 217, 0.6);
+  border: 2px solid primary-color;
   border-radius: 2%;
-  background-color: rgba(223, 217, 217, 0.6);
+  background-color: primary-color;
   box-shadow: 3px 3px 12px -4px rgba(0,0,0,0.69);
 }
 
@@ -27,35 +29,7 @@
   justify-content: space-between;
 }
 
-/* .sorting_wrapper {
-  width: 62%;
-}
-
-.sorting_item {
-  position: relative;
-}
-
-.sorting_title {
-  font-size: 0.8rem;
-  padding: 2px;
-  margin: 0 10px 0 0;
-}
-
-.icon_wrapper {
-  position: absolute;
-  top: -10px;
-  right: 7px;
-}
-
-.icon_wrapper_transformed {
-  position: absolute;
-  top: 0px;
-  right: -3px;
-  transform: rotate(180deg)
-} */
-
-
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 970px) {
   .panel {
     width: 40%;
   }

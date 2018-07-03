@@ -1,27 +1,58 @@
-.header {
+@value primary-color, font-color from '../../styles/variables.css';
+
+.container {
   display: flex;
   justify-content: space-between;
-  height: 36px;
   padding: 5px;
-  background-color: rgba(223, 217, 217, 0.6);
+  background-color:primary-color;
 }
 
 .title {
-  width: 30%;
+  width: 33%;
   margin: 0;
   text-align: center;
   text-transform: uppercase;
-  color: grey;
+  color: font-color;
 }
 
 .left_menu {
     display: flex;
     justify-content: flex-start;
-    width: 30%;
+    width: 33%;
 }
 
 .right_menu {
     display: flex;
     justify-content: flex-end;
-    width: 30%;
+    width: 33%;
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    flex-wrap: wrap;
+  }
+
+  .title {
+    width: 50%;
+    font-size: 1.75rem;
+  }
+
+  .left_menu {
+    justify-content: space-around;
+    width: 100%;
+    order: 2;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .title {
+    width: 100%;
+    padding: 8px 0;
+    font-size: 1.5rem;
+    order: 1;
+  }
+
+  .right_menu {
+    width: 100%;
+  }
 }

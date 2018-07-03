@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'; 
 import { v4 } from 'uuid';
@@ -17,7 +18,8 @@ const INITIAL_STATE = {
   editableStatus: false,
   priority: "low",
   editablePriority: false,
-  fullfilment: 0
+  fullfilment: 0,
+  isValidationPassed: false
 };
 
 export default class Form extends Component {
@@ -63,7 +65,8 @@ export default class Form extends Component {
         editableStatus: false,
         priority,
         editablePriority: false,
-        fullfilment: Number.parseInt(fullfilment, 10)
+        fullfilment: Number.parseInt(fullfilment, 10),
+        isValidationPassed: false
       }
       return;
     }
@@ -105,7 +108,7 @@ export default class Form extends Component {
 
   handleEditSubmit = e => {
     e.preventDefault();
-    if (this.state.task === '') {
+    if (!this.state.isValidationPassed) {
       return;
     }
     const updatedTodo = {
@@ -126,12 +129,22 @@ export default class Form extends Component {
   handleInputChange = e => {
     const name = e.target.name;
     const value = e.target.value;
-
-    this.setState({ [name]: value });
+    console.log(this.state.task);
+    console.log(this.validate());
+    debugger;
+    this.setState({ 
+      [name]: value,
+      isValidationPassed: this.validate()  
+    });
   };
 
   handleCloseModal = () => this.props.onCloseModal();
   
+  validate = () => {
+    // debugger;
+    if (this.state.task === '') return false;
+    return true;
+  }
 
   renderRadioInput = (name, value) => (
       <label htmlFor={value}>
@@ -157,6 +170,8 @@ export default class Form extends Component {
       submitFunc = this.handleEditSubmit;      
     }
 
+    const buttonType = (!this.state.isValidationPassed) ? "buttonDisabled" : "submit";
+
     return (
       <form className={styles.form} onSubmit={submitFunc}>
         <textarea 
@@ -166,7 +181,7 @@ export default class Form extends Component {
           ref={this.textArea}
           value={this.state.task} 
           onChange={this.handleInputChange}
-          className={styles.form_text} />
+          className={styles.todo} />
 
         <div className={styles.columns_container}>
           <div className={styles.column}>
@@ -199,7 +214,7 @@ export default class Form extends Component {
           </div>
 
           <div className={styles.column}>
-            <label htmlFor="fullfilment" className={styles.fullfilment}>Fullfilment (%):
+            <label htmlFor="fullfilment" className={styles.fullfilment}>fullfilment (%):
               <input
                     type="number"
                     id="fullfilment"
@@ -216,7 +231,7 @@ export default class Form extends Component {
 
         <div className={styles.columns_container}>
           <div className={styles.column}>
-            <Button type="submit" onClick={submitFunc}>{submitTitle}</Button>
+            <Button type={buttonType} onClick={submitFunc}>{submitTitle}</Button>
           </div>
           <div className={styles.column}>
             <Button onClick={this.handleCloseModal}>Cancel</Button>
