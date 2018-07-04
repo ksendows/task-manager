@@ -48,3 +48,10 @@
   color: font-color;
 }
 
+@media screen and (max-width: 620px) {
+  .title {
+    font-size: 0.8rem;
+  }
+}
+
+

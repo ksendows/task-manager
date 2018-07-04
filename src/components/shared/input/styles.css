@@ -13,7 +13,7 @@
 .number {
   display: inline-flex;
   flex-grow: 1;
-  font-size: 16px;
+  font-size: 1rem;
   font-family: inherit;
   outline: 0;
   padding: 4px;
@@ -28,4 +28,10 @@
 
 .input:focus {
   border-color: lightgray;
+}
+
+@media screen and (max-width: 620px) {
+  .input {
+    font-size: 0.8rem;
+  }
 }

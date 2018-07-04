@@ -17,6 +17,7 @@ export default class Panel extends Component {
             id: PropTypes.string.required,
             task: PropTypes.string.isRequired,
             dueDate: PropTypes.string.isRequired,
+            creationDate: PropTypes.string.isRequired,
             priority: PropTypes.oneOf(['low', 'normal', 'high']).isRequired
         })).isRequired,
         onDeleteTodo: PropTypes.func.isRequired,

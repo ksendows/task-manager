@@ -1,0 +1,48 @@
+@value primary-color, font-color from '../../../styles/variables.css';
+
+.container {
+  min-height: calc(100vh - 225px);
+  padding: 15px;
+}
+
+.header {
+  padding: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  color: font-color;
+  background-color:primary-color;
+}
+
+.header>h1 {
+    margin: 0;
+}
+
+.title {
+    margin: 50px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.video_container {
+    margin: 50px auto;
+    text-align: center;
+}
+
+.video {
+    width: 60%;
+    height: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .title {
+        margin: 20px;
+    }
+
+    .video_container {
+        margin: 20px auto;
+    }
+
+    .video {
+        width: 80%;  
+    }  
+}

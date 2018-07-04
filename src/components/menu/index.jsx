@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Button from '../shared/button';
 import settings from '../../icons/settings.svg';
 import login from '../../icons/login.svg';
@@ -16,7 +17,9 @@ const Menu = ({ onAddTodo, onOpenSettings }) => (
                 <Button type="menuItem" src={settings} onClick={onOpenSettings}></Button>
             </li>
             <li className={styles.menu_item}>
-                <Button type="menuItem">i</Button>
+                <Button type="menuItem">
+                    <Link to="/tutorial" className={styles.menu_item} target="_blank">i</Link>
+                </Button>
             </li>
             <li className={styles.menu_item}>
                 <Button type="menuItem" src={login}></Button>

@@ -15,8 +15,6 @@ export const getVisibleTodos = ({ todos, priorityFilter, search}, statusFilter) 
   });
 
 export const getPagesToShow = (currentPage, totalPages) => {
-
-  // const pagesNumbers = Array.from({ length: totalPages }, (v, i) => i + 1);
   const pagesNumbers = [];
 
   for (let i = 1; i <= totalPages; i += 1) {

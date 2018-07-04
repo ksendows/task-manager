@@ -53,7 +53,7 @@ Button.propTypes = {
     PropTypes.string,
     PropTypes.element
   ]),
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   type: PropTypes.string,
   src: PropTypes.string
 };
@@ -61,7 +61,8 @@ Button.propTypes = {
 Button.defaultProps = {
   type: 'button',
   src: '',
-  children: ''
+  children: '',
+  onClick: () => {}
 };
 
 export default Button;

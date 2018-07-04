@@ -1,8 +1,9 @@
-/*eslint-disable*/
 import React, { Component, Fragment } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import Modal from 'react-modal';
+import PanelsContainer from '../pages/panelsContainer';
+import TutorialPage from '../pages/tutorial';
 import Button from '../shared/button';
-import Panel from '../panel';
 import Footer from '../footer';
 import Header from '../header';
 import Form from "../form";
@@ -22,10 +23,12 @@ class App extends Component {
       todos: data.todos,
       search: '',
       priorityFilter: 'all',
-      showModal: false,
-      modalAction: '',
-      activeTodo: {},
-      activeList: 'todo',
+      modal: {
+        showModal: false,
+        modalAction: '',
+        activeTodo: {},
+        activeList: 'todo',
+      },
       showMap: false,
       showSettings: false
     };
@@ -36,27 +39,29 @@ class App extends Component {
     const activeList = list === "+" ? "To do" : list;
     this.handleCloseSettings();
     this.setState({ 
-      showModal: true,
-      activeList,
-      modalAction: "add" 
+      modal: {
+        showModal: true,
+        activeList,
+        modalAction: "add" 
+      }
     });
-    return;
   };
 
   handleCloseModal = () => this.setState({ 
-    showModal: false,
+    modal: {showModal: false},
     showMap: false
    });
 
   handleOpenEditModal = (id) => {
     this.handleCloseSettings();
     this.setState(prevState => ({
-      showModal: true,
       showSettings: false,
-      modalAction: "edit",
-      activeTodo: prevState.todos.filter(todo => todo.id === id)[0]
+      modal: {
+        showModal: true,
+        modalAction: "edit",
+        activeTodo: prevState.todos.filter(todo => todo.id === id)[0]
+      }
     }));
-    return;
   };
 
   addTodo = (todo) => {
@@ -66,13 +71,13 @@ class App extends Component {
   };
 
   deleteTodo = id => {
+    // eslint-disable-next-line
     const confirmDelete = confirm('Are you sure you want to delete this item?');
     if (confirmDelete) {
       this.setState(prevState => ({
         todos: prevState.todos.filter(todo => todo.id !== id)
       }));
     };
-    return;
   };
 
   editTodo = (updatedTodo) => this.setState(
@@ -107,8 +112,9 @@ class App extends Component {
 
   render() {
 
-    const { showModal, priorityFilter, search, activeTodo, modalAction, activeList, showMap, showSettings  } = this.state;
-
+    const { priorityFilter, search, modal, showMap, showSettings  } = this.state;
+    const { showModal, activeTodo, modalAction, activeList } = modal;
+ 
     const visibleTodos = getVisibleTodos(this.state, "To do");
     const visibleOnReview = getVisibleTodos(this.state, "On Review");
     const visibleInProcess = getVisibleTodos(this.state, "In Process");
@@ -116,45 +122,36 @@ class App extends Component {
 
     return (
       <Fragment>
-        <Header 
-          search={search}
-          onSearchChange={this.handleSearchChange}
-          changePriorityFilter={this.handlePriorityFilterChange}
-          currentFilter={priorityFilter} 
-          onAddTodo={this.handleOpenAddModal}
-          onOpenSettings={this.handleOpenSettings} />
 
-        <main className={styles.container}>
-          {showSettings && <Settings onCloseSettings={this.handleCloseSettings} />}
-          
-          <Panel 
-            title="To do" 
-            todos={visibleTodos}
-            onDeleteTodo={this.deleteTodo}
-            onEditTodo={this.handleOpenEditModal} 
-            onAddTodo={this.handleOpenAddModal}/>
+        <Switch>
+          <Route exact path="/" render={(props) => 
+            <Fragment>
+              <Header
+                search={search}
+                onSearchChange={this.handleSearchChange}
+                changePriorityFilter={this.handlePriorityFilterChange}
+                currentFilter={priorityFilter}
+                onAddTodo={this.handleOpenAddModal}
+                onOpenSettings={this.handleOpenSettings} />
 
-          <Panel
-            title="In Process"
-            todos={visibleInProcess}
-            onDeleteTodo={this.deleteTodo}
-            onEditTodo={this.handleOpenEditModal}
-            onAddTodo={this.handleOpenAddModal} />
+              <main className={styles.container}>
+                {showSettings && <Settings onCloseSettings={this.handleCloseSettings} />}
 
-          <Panel
-            title="On Review"
-            todos={visibleOnReview}
-            onDeleteTodo={this.deleteTodo}
-            onEditTodo={this.handleOpenEditModal}
-            onAddTodo={this.handleOpenAddModal} />
-
-          <Panel
-            title="Finished"
-            todos={visibleFinished}
-            onDeleteTodo={this.deleteTodo}
-            onEditTodo={this.handleOpenEditModal}
-            onAddTodo={this.handleOpenAddModal} />
-        </main>
+                <PanelsContainer 
+                  {...props} 
+                  visibleTodos={visibleTodos}
+                  visibleInProcess={visibleInProcess}
+                  visibleOnReview={visibleOnReview}
+                  visibleFinished={visibleFinished}
+                  onDeleteTodo={this.deleteTodo}
+                  onEditTodo={this.handleOpenEditModal}
+                  onAddTodo={this.handleOpenAddModal}
+                  />
+              </main>
+            </Fragment>
+          } />
+          <Route path="/tutorial" component={TutorialPage} />
+        </Switch>
 
         <Footer onShowMap={this.handleShowMap}/>
 

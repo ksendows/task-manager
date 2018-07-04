@@ -38,13 +38,12 @@ const Pagination = ({ currentPage, totalPages, onSwitchPages }) => {
                 <Button onClick={handleLeftArrowClick} type="icon" src={nextIcon} />
             </div>
             {pagesToShow.map(page => (
-                <div className={styles.item}>
+                <div className={styles.item} key={page}>
                     <a 
                         link="#" 
                         className={currentPage === page ? styles.page_number_active : styles.page_number}
                         onClick={handleSwitchPages}
-                        role="presentation"
-                        key={page}>
+                        role="presentation">
                         {page}
                     </a>
                 </div>))}

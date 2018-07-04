@@ -42,15 +42,16 @@
   width: 141px;
   margin: 0 auto;
 }
+
 .socials_item {
-  width: 43px;
-  height: 43px;
+  width: 32px;
+  height: 32px;
 }
 
 .logo {
   display: block;
-  width: 23px;
-  height: 23px;
+  width: 18px;
+  height: 18px;
   margin: 0 auto;
   padding-top: 10px;
 }
@@ -81,5 +82,16 @@
 
   .column > * {
     text-align: center;
+  }
+
+  .socials_item {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo {
+    width: 23px;
+    height: 23px;
+    padding-top: 5px;
   }
 }

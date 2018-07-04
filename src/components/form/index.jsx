@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
 import PropertySelect from "../propertySelect";
 import { formatDateForInput } from '../../utils/format';
+import validateInput from '../../utils/validators';
 import Button from '../shared/button/';
 import clockIcon from '../../icons/clock.svg';
 import styles from './styles.css';
@@ -16,7 +17,7 @@ const INITIAL_STATE = {
   dueDate: formatDateForInput(new Date(JSON.parse(JSON.stringify(defaultDueDate)))),
   status: "To do",
   editableStatus: false,
-  priority: "low",
+  priority: "normal",
   editablePriority: false,
   fullfilment: 0,
   isValidationPassed: false
@@ -51,9 +52,6 @@ export default class Form extends Component {
     this.focusTextArea = this.focusTextArea.bind(this);
 
     const {id, task, dueDate, creationDate, status, priority, fullfilment} = props.todo;
-
-    // if (Number.parseInt === undefined)
-    //   Number.parseInt = window.parseInt;
     
     if (props.action === "edit") {
       this.state = {
@@ -66,7 +64,7 @@ export default class Form extends Component {
         priority,
         editablePriority: false,
         fullfilment: Number.parseInt(fullfilment, 10),
-        isValidationPassed: false
+        isValidationPassed: true
       }
       return;
     }
@@ -88,7 +86,7 @@ export default class Form extends Component {
 
   handleAddSubmit = e => {
     e.preventDefault();
-    if (this.state.task === '') {
+    if (!this.state.isValidationPassed) {
       return;
     }
     const todo = {
@@ -129,22 +127,14 @@ export default class Form extends Component {
   handleInputChange = e => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log(this.state.task);
-    console.log(this.validate());
     debugger;
     this.setState({ 
       [name]: value,
-      isValidationPassed: this.validate()  
-    });
+      isValidationPassed: validateInput(name, value)
+     });
   };
 
   handleCloseModal = () => this.props.onCloseModal();
-  
-  validate = () => {
-    // debugger;
-    if (this.state.task === '') return false;
-    return true;
-  }
 
   renderRadioInput = (name, value) => (
       <label htmlFor={value}>
@@ -177,7 +167,7 @@ export default class Form extends Component {
         <textarea 
           name="task" 
           placeholder="Todo description" 
-          rows = "8"
+          rows = "6"
           ref={this.textArea}
           value={this.state.task} 
           onChange={this.handleInputChange}

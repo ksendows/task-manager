@@ -2,7 +2,13 @@
   width: 30%;
   height: 25px;
   margin: 5px;
-  font-size: 18px;
+  font-size: 1rem;
   color: grey;
   cursor: pointer;
+}
+
+@media screen and (max-width: 620px) {
+  .filter {
+    font-size: 0.8rem;
+  }
 }

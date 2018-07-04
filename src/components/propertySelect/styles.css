@@ -13,3 +13,9 @@
 .property {
   color: font-color;
 }
+
+@media screen and (max-width: 620px) {
+  .properties_container {
+    padding-bottom: 10px;
+  }  
+}

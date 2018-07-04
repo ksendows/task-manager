@@ -15,7 +15,7 @@
 
 .todo {
   width: 87%;
-  font-size: 16px;
+  font-size: 1rem;
   border: 0;
   resize: none;
 }
@@ -44,6 +44,16 @@
 .fullfilment_input {
   width: 85px;
   height: 24px;
+}
+
+@media screen and (max-width: 620px) {
+  .form {
+    font-size: 0.8rem;
+  }
+
+  .todo {
+    font-size: 0.8rem;
+  }
 }
 
 @media screen and (max-width: 480px) {

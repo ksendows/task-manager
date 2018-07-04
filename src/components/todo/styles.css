@@ -11,18 +11,22 @@
   color: white;
 }
 
+.priority {
+  width: 100%;
+}
+
 .priority_low {
-  width: 90%;
+  composes: priority;
   border-bottom: 3px solid green;
 }
 
 .priority_normal {
-  width: 90%;
+  composes: priority;
   border-bottom: 3px solid rgb(255, 255, 29);
 }
 
 .priority_high {
-  width: 90%;
+  composes: priority;
   border-bottom: 3px solid red;
 }
 
@@ -79,8 +83,15 @@
 
 .fullfilment_title {
   position: absolute;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 620px) {
+  .todo {
+    font-size: 0.8rem;
+  }
 }
 
 
