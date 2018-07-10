@@ -1,9 +1,7 @@
-/*eslint-disable*/
 import React, { Component, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Modal from 'react-modal';
 import MainPage from '../pages/mainPage';
-import StartPage from '../pages/startPage';
 import LoginPage from '../pages/loginPage';
 import TutorialPage from '../pages/tutorial';
 import Slider from '../slider';
@@ -150,8 +148,6 @@ class App extends Component {
     const mainStyle = isAuthenticated ? styles.container : styles.container_slider;
 
     return (
-      // <div className={styles.wrapper}>
-        // <div className={wrapperStyle}>
       <Fragment>
         <Switch>
           <Route exact path="/" render={(props) => 
@@ -168,8 +164,7 @@ class App extends Component {
                   onLogout={this.handleLogout}/>
                 <main className={mainStyle}> 
                   {showSettings && <Settings onCloseSettings={this.handleCloseSettings} />}
-                  {isAuthenticated 
-                    && <MainPage 
+                  {isAuthenticated && <MainPage 
                         {...props} 
                         visibleTodos={visibleTodos}
                         visibleInProcess={visibleInProcess}
@@ -177,27 +172,27 @@ class App extends Component {
                         visibleFinished={visibleFinished}
                         onDeleteTodo={this.deleteTodo}
                         onEditTodo={this.handleOpenEditModal}
-                        onAddTodo={this.handleOpenAddModal}
-                        />
-                    // : <StartPage/>
+                        onAddTodo={this.handleOpenAddModal} />
                   }
               </main>
               <Footer onShowMap={this.handleShowMap} />
           </div>
           } />
-          <Route path="/login" render={() => <LoginPage onLogin={this.handleLogin} onRegister={this.handleRegister} onShowMap={this.handleShowMap} />} />
-          {/* <Route path="/tutorial" component={TutorialPage} /> */}
-          <Route path="/tutorial" render={() => <TutorialPage onShowMap={this.handleShowMap}/>} />
+          <Route path="/login" render={() => 
+            <LoginPage 
+              onLogin={this.handleLogin} 
+              onRegister={this.handleRegister} 
+              onShowMap={this.handleShowMap} />} />
+          <Route path="/tutorial" render={() => 
+            <TutorialPage 
+              onShowMap={this.handleShowMap}/>} />
         </Switch>
-
-        {/* <Footer onShowMap={this.handleShowMap}/> */}
 
         <Modal
           isOpen={showModal}
           contentLabel="add/edit task"
           onRequestClose={this.handleCloseModal}
-          className={styles.modal}
-        >
+          className={styles.modal} >
           <Form 
             onCloseModal={this.handleCloseModal} 
             onAddTodo={this.addTodo} 
@@ -212,8 +207,7 @@ class App extends Component {
           isOpen={showMap}
           contentLabel="map"
           onRequestClose={this.handleCloseModal}
-          className={styles.modal_map}
-        >
+          className={styles.modal_map} >
           <iframe 
             title="map" 
             className={styles.map} 

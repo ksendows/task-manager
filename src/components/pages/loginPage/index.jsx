@@ -1,5 +1,5 @@
-/*eslint-disable*/
-import React, { Fragment } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import LoginForm from '../../loginForm';
 import Footer from '../../footer';
@@ -7,13 +7,12 @@ import Button from "../../shared/button";
 import nextIcon from "../../../icons/next.svg";
 import styles from './styles.css';
 
-const LoginPage = ( { onLogin, onRegister, onShowMap } ) => {
-  return (
+const LoginPage = ( { onLogin, onRegister, onShowMap } ) => (
     <div className={styles.wrapper}>
       <header className={styles.header}>
         <div className={styles.arrow_back}>
           <Link to="/">
-            <Button type="icon" src={nextIcon}></Button>
+            <Button type="icon" src={nextIcon} />
           </Link>
         </div>
         <h1 className={styles.title}>Task Manager</h1>
@@ -26,7 +25,12 @@ const LoginPage = ( { onLogin, onRegister, onShowMap } ) => {
       </main>
       <Footer onShowMap={onShowMap} />
     </div>
-  )
+  );
+
+LoginPage.propTypes = {
+  onLogin: PropTypes.func.isRequired,
+  onRegister: PropTypes.func.isRequired,
+  onShowMap: PropTypes.func.isRequired,
 };
 
 export default LoginPage;

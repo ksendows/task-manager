@@ -1,7 +1,14 @@
 @value primary-color, font-color from '../../../styles/variables.css';
 
+.wrapper {
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 100vh;
+  padding-bottom: 133px;
+}
+
 .container {
-  min-height: calc(100vh - 225px);
   padding: 15px;
 }
 
@@ -34,6 +41,10 @@
 }
 
 @media screen and (max-width: 768px) {
+    .header>h1 {
+        font-size: 1.3rem;
+    }
+
     .title {
         margin: 20px;
     }
@@ -46,3 +57,4 @@
         width: 80%;  
     }  
 }
+

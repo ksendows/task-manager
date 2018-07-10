@@ -1,57 +1,57 @@
 @value primary-color-solid from '../../styles/variables.css';
 
 .container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 88vw;
-    padding: 5px 10px;
-    background-color: primary-color-solid;
-    z-index: 20;
-    transform: translate(100%, 0%);
-    transition: transform 200ms linear;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 88vw;
+  padding: 5px 10px;
+  background-color: primary-color-solid;
+  z-index: 20;
+  transform: translate(100%, 0%);
+  transition: transform 200ms linear;
 }
 
 .title {
-    margin: 8px;
-    text-align: center;
+  margin: 8px;
+  text-align: center;
 }
 
 .arrow_back {
-    position: absolute;
-    top: 12px;
-    left: 10px;
-    transform: rotate(180deg);
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  transform: rotate(180deg);
 } 
 
 .gallery {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    height: 80vh;
-    padding: 20px;
-    overflow: scroll;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: 80vh;
+  padding: 20px;
+  overflow: scroll;
 }
 
 .item {
-    width: 300px;
-    height: 300px;
-    margin: 10px;
-    background-position: center;
-    background-size: cover;
-    border-radius: 3%;
-    opacity: 1;
-    transition: opacity 200ms linear;
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 3%;
+  opacity: 1;
+  transition: opacity 200ms linear;
 }
 
 .item:hover {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 800px) {
-.item {
+  .item {
     width: 200px;
     height: 200px;
-    }    
+  }  
 }

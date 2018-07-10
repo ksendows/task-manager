@@ -1,4 +1,5 @@
 @value primary-color-solid, font-color from '../../styles/variables.css';
+
 .wrapper {
   position: absolute;
   top: 0;
@@ -47,6 +48,3 @@
   font-size: 2em;
   color: font-color;
 }
-
-
-

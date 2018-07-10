@@ -1,5 +1,5 @@
-/*eslint-disable*/
-import React, {Fragment} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Footer from '../../footer';
 import styles from './styles.css';
 
@@ -7,7 +7,7 @@ const Tutorial = ({ onShowMap }) => {
     document.body.style.backgroundColor = "rgb(255, 255, 255)";
     document.body.style.backgroundImage = "none";
     return (
-        <Fragment>
+        <div className={styles.wrapper}>
             <header className={styles.header}>
                 <h1>Tutorial</h1>
             </header>
@@ -21,8 +21,12 @@ const Tutorial = ({ onShowMap }) => {
                 </div>
             </main>
             <Footer onShowMap={onShowMap} />
-        </Fragment>
+        </div>
     )
 };
+
+Tutorial.propTypes = {
+    onShowMap: PropTypes.func.isRequired
+}
 
 export default Tutorial;

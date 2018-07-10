@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'; 
 import { Redirect } from 'react-router-dom';
@@ -37,7 +36,8 @@ const INITIAL_STATE = {
 export default class LoginForm extends Component {
   static propTypes = {
     type: PropTypes.oneOf(['login', 'register']).isRequired,
-    onLogin: PropTypes.func.isRequired
+    onLogin: PropTypes.func.isRequired,
+    onRegister: PropTypes.func.isRequired
   };
 
   constructor(props) {
@@ -45,6 +45,25 @@ export default class LoginForm extends Component {
     this.state = { ...INITIAL_STATE };
     if (this.props.type === "register") this.state.isRegisterForm = true;
   };
+
+  setErrorMessage = () => {
+    if (!this.state.isValidating) return this.state.authenticationError;
+
+    let errorMessage;
+
+    const { login, password } = this.state.isValid;
+
+    if (!login.fieldIsValid && !password.fieldIsValid)
+      return "Password is too short and login is not an email"
+    if (this.state.isRegisterForm) {
+      Object.keys(this.state.isValid).forEach(field => {
+        if (!this.state.isValid[field].fieldIsValid) errorMessage = this.state.isValid[field].error
+      });
+      return errorMessage;
+    }
+
+    return (login.fieldIsValid ? password.error : login.error);   
+  }
 
   isValidationPassed() {
     const { name, login, password } = this.state.isValid;
@@ -112,28 +131,6 @@ export default class LoginForm extends Component {
 
   };
 
-  setErrorMessage = () => {
-    if (!this.state.isValidating) return this.state.authenticationError;
-
-    let errorMessage;
-
-    const { login, password } = this.state.isValid;
-  
-    if (!login.fieldIsValid && !password.fieldIsValid) 
-      errorMessage = "Password is too short and login is not an email"
-    else {
-      if (this.state.isRegisterForm) {
-        for (let key in this.state.isValid) {
-          if (!this.state.isValid[key].fieldIsValid) errorMessage = this.state.isValid[key].error
-        }
-      } else {
-            errorMessage = login.fieldIsValid ? password.error : login.error
-      }
-    }
-   
-    return errorMessage;
-  }
-
   handleInputChange = e => {
     const name = e.target.name;
     const value = e.target.value;
@@ -149,7 +146,7 @@ export default class LoginForm extends Component {
         ...this.state.isValid,
         [name]: {
           fieldIsValid: validationPassed,
-          error: error
+          error
       }
      }});
   };

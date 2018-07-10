@@ -28,16 +28,21 @@
 }
 
 .error {
-    min-height: 0.9rem;
-    font-size: 0.9rem;
-    color: red;
+  min-height: 0.9rem;
+  font-size: 0.9rem;
+  color: red;
 }
 
 @media screen and (max-width: 768px) {
-    .form {
-      width: 80%;
-      margin-bottom: 30px;
-    } 
+  .form {
+    width: 80%;
+    margin-bottom: 30px;
+    padding: 5px 5px 15px 5px;
+  } 
+
+  .inputs_container {
+    min-height: 0;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -72,9 +77,4 @@
     width: 62px;
   }
 }
-
-
-
-
-
 

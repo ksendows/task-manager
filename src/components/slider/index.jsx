@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React, { Fragment, Component } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './styles.css';
@@ -14,17 +13,17 @@ class Slider extends Component {
         this.slide5 = React.createRef();
         this.slides = [this.slide0, this.slide1, this.slide2, this.slide3, this.slide4, this.slide5];
         this.index = 0;
-        this.sliderTimerId;
+        this.sliderTimerId = null;
         this.time = 5000;
         this.timePassed = 0;
         this.timePaused = 0;
-        this.timeStart;
-        this.timePauseStart;
+        this.timeStart = null;
+        this.timePauseStart = null;
         this.bar = React.createRef();
         this.width = 1;
         this.barInterval = 10;
         this.step = (100 + this.barInterval) / (this.time / this.barInterval);
-        this.barTimerId;
+        this.barTimerId = null;
 
         this.animateBar = this.animateBar.bind(this);
         this.controlSlide = this.controlSlide.bind(this);
@@ -46,12 +45,10 @@ class Slider extends Component {
 
     slide (currentSlide, nextSlide) {
         /* eslint-disable no-param-reassign */
-        // debugger;
         nextSlide.style.left = "100%";
         nextSlide.style.display = "block"; 
 
         this.sliderTimerId = setTimeout(() => {
-            //debugger;
             currentSlide.style.left = "-100%";
             nextSlide.style.left = "0%";
 
@@ -107,7 +104,7 @@ class Slider extends Component {
         return (
         <Fragment>
             <div className={styles.slider} >
-                <div className={styles.slider_wrapper}>
+                <div className={styles.wrapper}>
                         <div className={styles.slide0} ref={this.slide0} />
                         <div className={styles.slide1} ref={this.slide1} />
                         <div className={styles.slide2} ref={this.slide2} />
@@ -116,9 +113,11 @@ class Slider extends Component {
                         <div className={styles.slide5} ref={this.slide5} />
                 </div>
             </div>
-                <Link to="/login" className={styles.text} onMouseOver={this.pause} onMouseOut={this.run}>
-                Please log-in to start using task manager.
-            </Link>
+                <div className={styles.text_wrapper}>
+                    <Link to="/login" className={styles.text} onMouseOver={this.pause} onMouseOut={this.run}>
+                        Please log-in to start using task manager.
+                    </Link>
+                </div>
                 <div className={styles.bar} ref={this.bar} />
         </Fragment>
         )
