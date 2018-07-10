@@ -1,29 +1,77 @@
 /*eslint-disable*/
+//     case 'email':
+// emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+// fieldValidationErrors.email = emailValid ? '' : ' is invalid';
+// break;
+//     case 'password':
+// passwordValid = value.length >= 6;
+// fieldValidationErrors.password = passwordValid ? '' : ' is too short';
+// break;
+
+const validatePassword = (password) => {
+    const result = password.length < 6 
+    ? {
+        validationPassed: false,
+        error: 'Password is two short'
+    }
+    : {
+        validationPassed: true,
+        error: ''
+    }
+    return result;
+}
+
+const validateLogin = (email) => {
+    const result = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i.test(email)
+        ? {
+            validationPassed: true,
+            error: ''
+        }
+        : {
+            validationPassed: false,
+            error: 'Login should be an email'
+        }
+    return result;
+}
+
+const validateName = (name) => {
+    const result = name === ""
+        ? {
+            validationPassed: false,
+            error: 'Please enter name'
+        }
+        : {
+            validationPassed: true,
+            error: ''
+        }
+    return result;
+}
+
 const validateTask = (task) => {
     if (task === '') return false;
     return true;
 }
 
-// var num = "12.34";
-// alert(num.match(/^\d+\.\d+$/ig)); // 12.34, дробь!
-
-//regexp только цифры, без - и .
 const validateFullfilment = (fullfilment) => {
-    console.log(fullfilment);
-    // debugger;
+    if (!/^\d{1,3}$/.test(fullfilment)) return false;
     if (fullfilment < 0 || fullfilment > 100) return false;
     return true;
 }
 
-const validateDate = (date) => {
-    console.log(date);
-    if (date) return false;
-    return true;
-}
+const validateDate = (dateString) => {
+    const parsedDate = new Date(dateString);
+    const year = parsedDate.getFullYear();
+    return (!(isNaN(year) || year < 2000 || year > 2100));
+};
 
-const validateInput = (name, value) => {
-    // debugger;
+const validateFields = (name, value) => {
     switch (name) {
+        case "login":
+            return validateLogin(value);
+        case "password":
+            return validatePassword(value);
+        case "name":
+            return validateName(value);
         case "task":
             return validateTask(value);
         case "fullfilment":
@@ -31,10 +79,10 @@ const validateInput = (name, value) => {
         case "dueDate":
             return validateDate(value);
         default:
-            break;
+            return true;
     }
 }
 
-export default validateInput;
+export default validateFields;
 
 

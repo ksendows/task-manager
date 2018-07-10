@@ -84,40 +84,4 @@ export default class Settings extends Component {
 }
 
 
-// const Settings = React.forwardRef((props, ref) => {
-    
-//     const gallery = React.createRef();
-
-//     const handleOpenChangeBackground = () => {
-//         gallery.current.style.display = "block";
-//         setTimeout(() => {
-//             gallery.current.style.width = "60vw"
-//         }, 0);
-//     };
-    
-//     return (
-//     <div ref={ref} className={styles.container}>
-//         <Button onClick={props.onCloseSettings} type="modalClose" src={closeIcon} />
-
-//         <p className={styles.title}>Settings</p>
-//         <hr />
-//         <ul className={styles.menu_list}>
-//             <li>
-//                 <Button type="buttonHover" onClick={handleOpenChangeBackground}>Change background</Button>
-//             </li>
-//             <li>
-//                 <Button type="buttonHover">Other settings ...</Button>
-//             </li>
-//         </ul>
-
-//         <Gallery ref={gallery}/>
-//     </div>       
-// )});
-
-// Settings.propTypes = {
-//     onCloseSettings: PropTypes.func.isRequired
-// };
-
-// export default Settings;
-
 

@@ -1,14 +1,19 @@
+/*eslint-disable*/
 import React, { Component, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Modal from 'react-modal';
-import PanelsContainer from '../pages/panelsContainer';
+import MainPage from '../pages/mainPage';
+import StartPage from '../pages/startPage';
+import LoginPage from '../pages/loginPage';
 import TutorialPage from '../pages/tutorial';
+import Slider from '../slider';
 import Button from '../shared/button';
 import Footer from '../footer';
 import Header from '../header';
 import Form from "../form";
 import Settings from '../settings';
 import { getVisibleTodos } from "../../utils/selectors";
+import { signIn, register } from '../../utils/authentication';
 import closeIcon from "../../icons/close.svg";
 import data from '../../data.json';
 import styles from './styles.css';
@@ -20,6 +25,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      isAuthenticated: false,
       todos: data.todos,
       search: '',
       priorityFilter: 'all',
@@ -99,12 +105,30 @@ class App extends Component {
   handleSearchChange = str => this.setState({ search: str });
 
   handleOpenSettings = () => {
-    // if (this.state.showSettings) {
-    //   this.handleCloseSettings();
-    // } else {
+    if (this.state.showSettings) {
+      this.handleCloseSettings();
+    } else {
       this.setState({ showSettings: true });
-    // }
+    }
   };
+
+  handleLogin = (user) => {
+    const reply = signIn(user);
+    if (!reply.error) {
+      this.setState({ isAuthenticated: true });
+    }
+    return reply;
+  }
+
+  handleRegister = (user) => {
+    const reply = register(user);
+    if (!reply.error) {
+      this.setState({ isAuthenticated: true });
+    }
+    return reply;
+  }
+
+  handleLogout = () => this.setState({ isAuthenticated: false });
 
   handleCloseSettings = () => {
       this.setState({ showSettings: false }); 
@@ -112,7 +136,7 @@ class App extends Component {
 
   render() {
 
-    const { priorityFilter, search, modal, showMap, showSettings  } = this.state;
+    const { priorityFilter, search, modal, showMap, showSettings, isAuthenticated } = this.state;
     const { showModal, activeTodo, modalAction, activeList } = modal;
  
     const visibleTodos = getVisibleTodos(this.state, "To do");
@@ -120,40 +144,53 @@ class App extends Component {
     const visibleInProcess = getVisibleTodos(this.state, "In Process");
     const visibleFinished = getVisibleTodos(this.state, "Finished");
 
-    return (
-      <Fragment>
+    const page = isAuthenticated ? "main" : "start/login";
 
+    const wrapperStyle = isAuthenticated ? styles.wrapper : styles.wrapper_slider;
+    const mainStyle = isAuthenticated ? styles.container : styles.container_slider;
+
+    return (
+      // <div className={styles.wrapper}>
+        // <div className={wrapperStyle}>
+      <Fragment>
         <Switch>
           <Route exact path="/" render={(props) => 
-            <Fragment>
-              <Header
-                search={search}
-                onSearchChange={this.handleSearchChange}
-                changePriorityFilter={this.handlePriorityFilterChange}
-                currentFilter={priorityFilter}
-                onAddTodo={this.handleOpenAddModal}
-                onOpenSettings={this.handleOpenSettings} />
-
-              <main className={styles.container}>
-                {showSettings && <Settings onCloseSettings={this.handleCloseSettings} />}
-
-                <PanelsContainer 
-                  {...props} 
-                  visibleTodos={visibleTodos}
-                  visibleInProcess={visibleInProcess}
-                  visibleOnReview={visibleOnReview}
-                  visibleFinished={visibleFinished}
-                  onDeleteTodo={this.deleteTodo}
-                  onEditTodo={this.handleOpenEditModal}
+            <div className={wrapperStyle}>
+                {isAuthenticated || <Slider />}
+                <Header
+                  page={page}
+                  search={search}
+                  onSearchChange={this.handleSearchChange}
+                  changePriorityFilter={this.handlePriorityFilterChange}
+                  currentFilter={priorityFilter}
                   onAddTodo={this.handleOpenAddModal}
-                  />
+                  onOpenSettings={this.handleOpenSettings}
+                  onLogout={this.handleLogout}/>
+                <main className={mainStyle}> 
+                  {showSettings && <Settings onCloseSettings={this.handleCloseSettings} />}
+                  {isAuthenticated 
+                    && <MainPage 
+                        {...props} 
+                        visibleTodos={visibleTodos}
+                        visibleInProcess={visibleInProcess}
+                        visibleOnReview={visibleOnReview}
+                        visibleFinished={visibleFinished}
+                        onDeleteTodo={this.deleteTodo}
+                        onEditTodo={this.handleOpenEditModal}
+                        onAddTodo={this.handleOpenAddModal}
+                        />
+                    // : <StartPage/>
+                  }
               </main>
-            </Fragment>
+              <Footer onShowMap={this.handleShowMap} />
+          </div>
           } />
-          <Route path="/tutorial" component={TutorialPage} />
+          <Route path="/login" render={() => <LoginPage onLogin={this.handleLogin} onRegister={this.handleRegister} onShowMap={this.handleShowMap} />} />
+          {/* <Route path="/tutorial" component={TutorialPage} /> */}
+          <Route path="/tutorial" render={() => <TutorialPage onShowMap={this.handleShowMap}/>} />
         </Switch>
 
-        <Footer onShowMap={this.handleShowMap}/>
+        {/* <Footer onShowMap={this.handleShowMap}/> */}
 
         <Modal
           isOpen={showModal}

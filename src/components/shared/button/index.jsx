@@ -42,6 +42,7 @@ const Button = ({ children, onClick, type, src }) => {
     if (src) return (
       <div className={btnClass} onClick={onClick} role="presentation">
         <img src={src} className={iconClass} alt="icon" />
+        {children}
       </div>);
     
     return (

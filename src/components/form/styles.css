@@ -46,16 +46,6 @@
   height: 24px;
 }
 
-@media screen and (max-width: 620px) {
-  .form {
-    font-size: 0.8rem;
-  }
-
-  .todo {
-    font-size: 0.8rem;
-  }
-}
-
 @media screen and (max-width: 480px) {
   .date_input {
     width: 125px;

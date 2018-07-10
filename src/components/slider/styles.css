@@ -1,0 +1,74 @@
+.slider {
+    position: relative;
+    width: 9999px;
+    height: 100vh;
+}
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    /* width: 100%; */
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    transition: left 1000ms;
+}
+
+.slide0 {
+    composes: slide;
+    display: block;
+    background-image: url('../gallery/backgrounds/photo4.jpg');
+}
+.slide1 {
+    composes: slide;
+    background-image: url('../gallery/backgrounds/photo11.jpg');
+}
+.slide2 {
+    composes: slide;
+    background-image: url('../gallery/backgrounds/photo12.jpg');
+}
+.slide3 {
+    composes: slide;
+    background-image: url('../gallery/backgrounds/photo2.jpg');
+}
+.slide4 {
+    composes: slide;
+    background-image: url('../gallery/backgrounds/photo8.jpg');
+}
+.slide5 {
+    composes: slide;
+    background-image: url('../gallery/backgrounds/photo4.jpg');
+}
+
+
+.bar {
+    position: absolute;
+    left: 0;
+    bottom: 133px;
+    height: 7px;
+    width: 0%;
+    background-color: rgba(223, 217, 217, 0.7);
+}
+
+.text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.3rem;
+    text-decoration: none;
+}
+

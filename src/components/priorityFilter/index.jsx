@@ -4,7 +4,7 @@ import styles from './styles.css';
 
 const PriorityFilter = ({ currentFilter, changePriorityFilter}) => (
     <select
-        className={styles.filter}
+        className={styles.container}
         value={currentFilter}
         onChange={e => changePriorityFilter(e.target.value)}>
         <option value="all">all</option>

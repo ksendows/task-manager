@@ -141,13 +141,6 @@
   height: 16px;
 }
 
-@media screen and (max-width: 620px) {
-  .button {
-    font-size: 0.8rem;
-    margin: 0 auto;
-  }
-}
-
 @media screen and (max-width: 470px) {
   .button {
     width: 130px;
@@ -155,6 +148,12 @@
   }
   .buttonHover {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .menuItem {
+    line-height: 28px;
   }
 }
 

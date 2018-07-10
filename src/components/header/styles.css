@@ -7,6 +7,14 @@
   background-color:primary-color;
 }
 
+.container_slider {
+  composes: container;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
 .title {
   width: 33%;
   margin: 0;

@@ -10,13 +10,12 @@ const Search = ({ search, onSearchChange }) => {
   };
 
     return (
-      <form className={styles.search}>
+      <form className={styles.container}>
         <Input
           name="text"
           value={search}
           onChange={handleChange}
           placeholder="Search by task..."
-          className={styles.search_input}
         />
       </form>
     );

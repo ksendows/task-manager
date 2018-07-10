@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
 import PropertySelect from "../propertySelect";
 import { formatDateForInput } from '../../utils/format';
-import validateInput from '../../utils/validators';
+import validateFields from '../../utils/validators';
 import Button from '../shared/button/';
 import clockIcon from '../../icons/clock.svg';
 import styles from './styles.css';
@@ -20,7 +20,11 @@ const INITIAL_STATE = {
   priority: "normal",
   editablePriority: false,
   fullfilment: 0,
-  isValidationPassed: false
+  isValid: {
+    task: false,
+    fullfilment: true,
+    dueDate: true
+  }
 };
 
 export default class Form extends Component {
@@ -64,7 +68,11 @@ export default class Form extends Component {
         priority,
         editablePriority: false,
         fullfilment: Number.parseInt(fullfilment, 10),
-        isValidationPassed: true
+        isValid: {
+          task: true,
+          fullfilment: true,
+          dueDate: true
+        }
       }
       return;
     }
@@ -84,9 +92,14 @@ export default class Form extends Component {
     this.textArea.current.focus();
   }
 
+  isValidationPassed() {
+    const { task, fullfilment, dueDate } = this.state.isValid;
+    return task && fullfilment && dueDate;
+  }    
+
   handleAddSubmit = e => {
     e.preventDefault();
-    if (!this.state.isValidationPassed) {
+    if (!this.isValidationPassed()) {
       return;
     }
     const todo = {
@@ -106,7 +119,7 @@ export default class Form extends Component {
 
   handleEditSubmit = e => {
     e.preventDefault();
-    if (!this.state.isValidationPassed) {
+    if (!this.isValidationPassed()) {
       return;
     }
     const updatedTodo = {
@@ -127,10 +140,12 @@ export default class Form extends Component {
   handleInputChange = e => {
     const name = e.target.name;
     const value = e.target.value;
-    debugger;
     this.setState({ 
       [name]: value,
-      isValidationPassed: validateInput(name, value)
+      isValid: {
+        ...this.state.isValid,
+        [name]: validateFields(name, value)
+      }
      });
   };
 
@@ -160,7 +175,7 @@ export default class Form extends Component {
       submitFunc = this.handleEditSubmit;      
     }
 
-    const buttonType = (!this.state.isValidationPassed) ? "buttonDisabled" : "submit";
+    const buttonType = (!this.isValidationPassed()) ? "buttonDisabled" : "submit";
 
     return (
       <form className={styles.form} onSubmit={submitFunc}>
@@ -212,7 +227,6 @@ export default class Form extends Component {
                     value={this.state.fullfilment}
                     onChange={this.handleInputChange}
                     className={styles.fullfilment_input}
-                    placeholder="0"
                     min="0" max="100"
                     step="1" />
             </label>

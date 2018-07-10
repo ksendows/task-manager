@@ -26,6 +26,12 @@
     list-style: none;
 }
 
+@media screen and (max-width: 620px) {
+    .title {
+        font-size: 1rem;
+    }
+}
+
 @media screen and (max-width: 500px) {
     .container {
         width: 50%;

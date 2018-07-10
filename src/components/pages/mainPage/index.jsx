@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Panel from '../../panel';
 
-const PanelsContainer = ({ visibleTodos, visibleInProcess, visibleOnReview, visibleFinished, onDeleteTodo, onEditTodo, onAddTodo} ) => (
+const MainPage = ({ visibleTodos, visibleInProcess, visibleOnReview, visibleFinished, onDeleteTodo, onEditTodo, onAddTodo} ) => (
     <Fragment>
         <Panel
             title="To do"
@@ -34,7 +34,7 @@ const PanelsContainer = ({ visibleTodos, visibleInProcess, visibleOnReview, visi
     </Fragment>
 );
 
-PanelsContainer.propTypes = {
+MainPage.propTypes = {
     visibleTodos: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.required,
         task: PropTypes.string.isRequired,
@@ -68,12 +68,4 @@ PanelsContainer.propTypes = {
     onAddTodo: PropTypes.func.isRequired
 };
 
-// PanelsContainer.defaultProps = {
-//     handleSearchChange: () => { },
-//     search: '',
-//     handlePriorityFilterChange: () => { },
-//     priorityFilter: 'all',
-//     onAddTodo: () => { }
-// };
-
-export default PanelsContainer;
+export default MainPage;
