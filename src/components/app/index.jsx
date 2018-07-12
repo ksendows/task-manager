@@ -41,13 +41,11 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    if (this.state.isAuthenticated) {
-      if (localStorage.getItem('background')) {
-        document.body.style.backgroundImage = `url(${localStorage.getItem('background')})`
-      } 
-    } else document.body.style.backgroundColor = 'white'
+    if (localStorage.getItem('background')) {
+      document.body.style.backgroundImage = `url(${localStorage.getItem('background')})`
+    } 
   }
-  
+
   handleOpenAddModal = e => {
     const list = e.target.parentNode.firstChild.firstChild.textContent;
     const activeList = list === "+" ? "To do" : list;

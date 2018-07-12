@@ -28,7 +28,7 @@ class Slider extends Component {
         this.timeStart = new Date(); 
     }
 
-    componentDidUnmount () {
+    componentWillUnmount () {
         this.pause();
     }
 
