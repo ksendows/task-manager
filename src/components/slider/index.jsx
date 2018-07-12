@@ -10,7 +10,6 @@ class Slider extends Component {
         this.slide2 = React.createRef();
         this.slide3 = React.createRef();
         this.slide4 = React.createRef();
-        // this.slide5 = React.createRef();
         this.slides = [this.slide0, this.slide1, this.slide2, this.slide3, this.slide4];
         this.index = 0;
         this.sliderTimerId = null;
@@ -24,7 +23,7 @@ class Slider extends Component {
         this.run = this.run.bind(this);
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.sliderTimerId = setTimeout(this.controlSlide, this.time);
         this.timeStart = new Date(); 
     }
@@ -87,7 +86,6 @@ class Slider extends Component {
                         <div className={styles.slide2} ref={this.slide2} />
                         <div className={styles.slide3} ref={this.slide3} />
                         <div className={styles.slide4} ref={this.slide4} />
-                        <div className={styles.slide5} ref={this.slide5} />
                 </div>
             </div>
             <div className={styles.text_wrapper}>
