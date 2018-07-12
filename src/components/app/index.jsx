@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { Component, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Modal from 'react-modal';
@@ -14,6 +15,7 @@ import Settings from '../settings';
 import { getVisibleTodos } from "../../utils/selectors";
 import { signIn, register } from '../../utils/authentication';
 import closeIcon from "../../icons/close.svg";
+// import background from "../gallery/backgrounds/photo4.jpg";
 import data from '../../data.json';
 import styles from './styles.css';
 
@@ -41,9 +43,11 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    if (localStorage.getItem('background')) {
-      document.body.style.backgroundImage = `url(${localStorage.getItem('background')})`
-    } 
+    // debugger;
+    // if (this.state.isAuthenticated) {
+      if (localStorage.getItem('background'))
+        document.body.style.backgroundImage = `url(${localStorage.getItem('background')})`;
+    // } else document.body.style.backgroundImage = `url(${background})`;
   }
 
   handleOpenAddModal = e => {
