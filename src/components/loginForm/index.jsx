@@ -105,6 +105,9 @@ export default class LoginForm extends Component {
     this.setState(() => ({
       isValidating: false
     }))
+
+    if (localStorage.getItem('background'))
+      document.body.style.backgroundImage = `url(${localStorage.getItem('background')})`;
   };
 
   handleRegisterSubmit = e => {

@@ -43,7 +43,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    debugger;
+    // debugger;
     if (this.state.isAuthenticated) {
       if (localStorage.getItem('background'))
         document.body.style.backgroundImage = `url(${localStorage.getItem('background')})`;
