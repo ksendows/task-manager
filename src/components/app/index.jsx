@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React, { Component, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Modal from 'react-modal';
@@ -43,7 +42,6 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    // debugger;
     if (this.state.isAuthenticated) {
       if (localStorage.getItem('background'))
         document.body.style.backgroundImage = `url(${localStorage.getItem('background')})`;
