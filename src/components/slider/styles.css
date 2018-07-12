@@ -51,10 +51,10 @@
   background-image: url('../gallery/backgrounds/photo8.jpg');
 }
 
-.slide5 {
+/* .slide5 {
   composes: slide;
   background-image: url('../gallery/backgrounds/photo3.jpg');
-}
+} */
 
 .text_wrapper {
   position: absolute;
@@ -86,7 +86,7 @@
 
 #preload-01 { background: url('../gallery/backgrounds/photo4.jpg') no-repeat -9999px -9999px; }
 #preload-02 { background: url('../gallery/backgrounds/photo2.jpg') no-repeat -9999px -9999px; }
-#preload-03 { background: url('../gallery/backgrounds/photo3.jpg') no-repeat -9999px -9999px; }
+/* #preload-03 { background: url('../gallery/backgrounds/photo3.jpg') no-repeat -9999px -9999px; } */
 #preload-04 { background: url('../gallery/backgrounds/photo8.jpg') no-repeat -9999px -9999px; }
 #preload-05 { background: url('../gallery/backgrounds/photo11.jpg') no-repeat -9999px -9999px; }
 #preload-06 { background: url('../gallery/backgrounds/photo12.jpg') no-repeat -9999px -9999px; }

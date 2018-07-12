@@ -10,8 +10,8 @@ class Slider extends Component {
         this.slide2 = React.createRef();
         this.slide3 = React.createRef();
         this.slide4 = React.createRef();
-        this.slide5 = React.createRef();
-        this.slides = [this.slide0, this.slide1, this.slide2, this.slide3, this.slide4, this.slide5];
+        // this.slide5 = React.createRef();
+        this.slides = [this.slide0, this.slide1, this.slide2, this.slide3, this.slide4];
         this.index = 0;
         this.sliderTimerId = null;
         this.time = 5000;
