@@ -29,7 +29,7 @@ const Button = ({ children, onClick, type, src }) => {
       btnClass = styles.mapLink;
       break;
     case "menuItem":
-      btnClass = styles.menuItem;
+      btnClass = !src ? styles.menuItem_plus : styles.menuItem;
       break;
     case "menuBack":
       btnClass = styles.menuBack;

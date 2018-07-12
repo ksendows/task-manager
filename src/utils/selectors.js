@@ -1,4 +1,3 @@
-
 export const getVisibleTodos = ({ todos, priorityFilter, search}, statusFilter) =>
     
   todos.filter(todo => {

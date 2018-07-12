@@ -1,27 +1,38 @@
-/*eslint-disable*/
 import users from '../users';
 
 export const signIn = ({ login, password }) => {
-    const user = users.find(user => user.login === login);
+    let loggedUser;
+    for (let i = 0; i < users.length; i += 1) {
+        if (users[i].login === login) {
+            loggedUser = users[i];
+            break;
+        }    
+    };
 
-    if (!user) return ({ error: 'User does not exist'});
+    if (!loggedUser) return ({ error: 'User does not exist'});
 
-    if (user.password !== password) return ({ error: 'Invalid password' });
+    if (loggedUser.password !== password) return ({ error: 'Invalid password' });
 
     return({
-        name: user.name,
-        login: user.login
+        name: loggedUser.name,
+        login: loggedUser.login
     });
 };
 
 export const register = ({ name, login, password }) => {
-    const user = users.find(user => user.login === login);
+    let registeredUser;
+    for (let i = 0; i < users.length; i += 1) {
+        if (users[i].login === login) {
+            registeredUser = users[i];
+            break;
+        }
+    };
 
-    if (!user) {
+    if (!registeredUser) {
         const newUser = {
-            name: name,
-            login: login,
-            password: password
+            name,
+            login,
+            password
         };
         users.push(newUser);
         return newUser;
@@ -30,32 +41,3 @@ export const register = ({ name, login, password }) => {
     return (
         { error: 'User already exist' });
 };
-
-    // return new Promise((resolve, reject) => {
-    //     const user = users.find(user => user.login === login);
-
-    //     setTimeout(() => {
-    //         if (!user) {
-    //             reject('User does not exist!');
-    //             return;
-    //         }
-
-    //         if (user.password !== password) {
-    //             reject('Invalid password!');
-    //             return;
-    //         }
-
-    //         resolve({
-    //             name: user.name,
-    //             login: user.login
-    //         });
-    //     }, 300);
-    // });
-
-// export const signOut = () => {
-//     return new Promise(resolve => {
-//         setTimeout(() => {
-//             resolve();
-//         }, 300);
-//     });
-// };

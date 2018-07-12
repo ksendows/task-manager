@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Button from "../button";
 import { getPagesToShow } from "../../../utils/selectors";
@@ -6,63 +6,62 @@ import nextIcon from "../../../icons/next.svg";
 import styles from './styles.css';
 
 
-const Pagination = ({ currentPage, totalPages, onSwitchPages }) => {
+export default class Pagination extends Component {
 
-    const handleSwitchPages = e => {
+    static propTypes = {
+        onSwitchPages: PropTypes.func.isRequired,
+        currentPage: PropTypes.number.isRequired,
+        totalPages: PropTypes.number.isRequired
+    }
+
+    componentDidUpdate = () => 
+        this.props.currentPage > this.props.totalPages && this.props.onSwitchPages(1);
+
+    handleSwitchPages = e => {
         e.preventDefault();
         if (e.target.textContent === "...") return;
 
         if (Number.parseInt === undefined)
             Number.parseInt = window.parseInt;
         const nextPage = Number.parseInt(e.target.textContent, 10);
-        onSwitchPages(nextPage);
+        this.props.onSwitchPages(nextPage);
     }
 
-    const handleLeftArrowClick = e => {
+    handleLeftArrowClick = e => {
         e.preventDefault();
-        const nextPage = (currentPage === 1) ? currentPage : currentPage - 1;
-        onSwitchPages(nextPage);
+        const nextPage = (this.props.currentPage === 1) ? this.props.currentPage : this.props.currentPage - 1;
+        this.props.onSwitchPages(nextPage);
     }
 
-    const handleRightArrowClick = e => {
+    handleRightArrowClick = e => {
         e.preventDefault();
-        const nextPage = (currentPage === totalPages) ? currentPage : currentPage + 1;
-        onSwitchPages(nextPage);
+        const nextPage = (this.props.currentPage === this.props.totalPages) ? this.props.currentPage : this.props.currentPage + 1;
+        this.props.onSwitchPages(nextPage);
     }
+
+    render () {
+    const { currentPage, totalPages } = this.props;
 
     const pagesToShow = getPagesToShow(currentPage, totalPages);
-    
-    return (
-        <div className={styles.container}>
-            <div className={styles.arrow_left}>
-                <Button onClick={handleLeftArrowClick} type="icon" src={nextIcon} />
+        return (
+            <div className={styles.container}>
+                <div className={styles.arrow_left}>
+                    <Button onClick={this.handleLeftArrowClick} type="icon" src={nextIcon} />
+                </div>
+                {pagesToShow.map((page, index) => (
+                    <div className={styles.item} key={index.toString()}>
+                        <a
+                            link="#"
+                            className={currentPage === page ? styles.page_number_active : styles.page_number}
+                            onClick={this.handleSwitchPages}
+                            role="presentation">
+                            {page}
+                        </a>
+                    </div>))}
+                <div className={styles.arrow_right}>
+                    <Button onClick={this.handleRightArrowClick} type="icon" src={nextIcon} />
+                </div>
             </div>
-            {pagesToShow.map(page => (
-                <div className={styles.item} key={page}>
-                    <a 
-                        link="#" 
-                        className={currentPage === page ? styles.page_number_active : styles.page_number}
-                        onClick={handleSwitchPages}
-                        role="presentation">
-                        {page}
-                    </a>
-                </div>))}
-            <div className={styles.arrow_right}>
-                <Button onClick={handleRightArrowClick} type="icon" src={nextIcon} />
-            </div>
-        </div>
-    )
+        )   
+    }
 }
-
-export default Pagination;
-
-Pagination.propTypes = {
-    onSwitchPages: PropTypes.func.isRequired,
-    currentPage: PropTypes.number.isRequired,
-    totalPages: PropTypes.number.isRequired
-};
-
-
-
-
-

@@ -1,0 +1,22 @@
+@value primary-color-solid, font-color from '../../styles/variables.css';
+
+.container {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  right: 0;
+  min-width: 150px;
+  padding: 5px;
+  margin: 0;
+  background-color: primary-color-solid;
+}
+
+.menu {
+  padding: 5px;
+  list-style: none;
+}
+
+.menu_link {
+  color: font-color;
+  cursor: pointer;
+}

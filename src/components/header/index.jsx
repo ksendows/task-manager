@@ -5,7 +5,8 @@ import PriorityFilter from "../priorityFilter";
 import Menu from '../menu';
 import styles from './styles.css';
 
-const Header = ({ page, search, onSearchChange, currentFilter, changePriorityFilter, onAddTodo, onOpenSettings, onLogout }) => 
+const Header = ({ page, search, onSearchChange, currentFilter, changePriorityFilter, 
+    onAddTodo, onOpenSettings, onLogout, onAuthSubmenuOpen }) => 
     page === "main"
         ? ( <header className={styles.container}>
                 <div className={styles.left_menu}>
@@ -22,7 +23,8 @@ const Header = ({ page, search, onSearchChange, currentFilter, changePriorityFil
                         page={page}
                         onAddTodo={onAddTodo} 
                         onOpenSettings={onOpenSettings}
-                        onLogout={onLogout} />
+                        onLogout={onLogout} 
+                        onAuthSubmenuOpen={onAuthSubmenuOpen}/>
                 </div>
             </header>)
         : (<header className={styles.container_slider}>
@@ -43,8 +45,8 @@ Header.propTypes = {
     changePriorityFilter: PropTypes.func,
     onAddTodo: PropTypes.func, 
     onOpenSettings: PropTypes.func.isRequired,
-    onLogout: PropTypes.func.isRequired,
-    // onLogin: PropTypes.func.isRequired
+    onLogout: PropTypes.func,
+    onAuthSubmenuOpen: PropTypes.func.isRequired
 };
 
 Header.defaultProps ={
@@ -52,7 +54,8 @@ Header.defaultProps ={
     search: '',
     changePriorityFilter: () => {},
     currentFilter: 'all',
-    onAddTodo: () => {}
+    onAddTodo: () => {},
+    onLogout: () => { }
 };
 
 export default Header;

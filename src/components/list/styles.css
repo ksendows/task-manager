@@ -6,6 +6,7 @@
 }
 
 .list {
+  min-height: 10px;
   margin: 0;
   padding: 16px;
   list-style: none;

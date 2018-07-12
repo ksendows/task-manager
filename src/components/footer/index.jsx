@@ -11,7 +11,7 @@ const Footer = ({ onShowMap }) => (
             <div className={styles.container}>
                 <div className={styles.column}>
                     <p>TASK MANAGER</p>
-                    <adress className={styles.info}>Adress: Kiev, Politechnicheskaya&nbsp;Str.&nbsp;6</adress>
+                    <address className={styles.info}>Address: Kiev, Politechnicheskaya&nbsp;Str.&nbsp;6</address>
                     <Button className={styles.map} onClick={onShowMap} type="mapLink">HOW TO FIND US:</Button>
                     <a href="tel:+1(234)666-02-66" className={styles.info}>Phone: +1 (234) 666-02-66</a>
                 </div>

@@ -23,7 +23,8 @@ export default class Panel extends Component {
         })).isRequired,
         onDeleteTodo: PropTypes.func.isRequired,
         onAddTodo: PropTypes.func.isRequired,
-        onEditTodo: PropTypes.func.isRequired
+        onEditTodo: PropTypes.func.isRequired,
+        onDropTodo: PropTypes.func.isRequired
     };
 
     constructor(props) {
@@ -41,7 +42,7 @@ export default class Panel extends Component {
 
     render () {
 
-        const { title, todos, onDeleteTodo, onAddTodo, onEditTodo } = this.props;
+        const { title, todos, onDeleteTodo, onAddTodo, onEditTodo, onDropTodo } = this.props;
         const { currentPage, sortBy } = this.state;
 
         const isPaginated = todos.length > ROWS_PER_PAGE;
@@ -58,12 +59,14 @@ export default class Panel extends Component {
         <div className={styles.panel}>
             <div className={styles.header}>
                 <h2 className={styles.title}>{title}</h2>
-                <Sorting onSort={this.handleSort} activeMethod={sortBy}/>
+                <Sorting onSort={this.handleSort} activeMethod={sortBy} />
             </div>
             <List
+                name={title}
                 data={visibleTodos}
                 onDeleteTodo={onDeleteTodo}
-                onEditTodo={onEditTodo} />
+                onEditTodo={onEditTodo} 
+                onDropTodo={onDropTodo}/>
             {isPaginated && 
                 <Pagination 
                     currentPage={currentPage} 

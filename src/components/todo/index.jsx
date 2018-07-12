@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from "../shared/button";
 import { formatDate } from '../../utils/format';
-import clockIcon from '../../icons/clock.svg';
+import clockIcon from '../../icons/time.svg';
 import deleteIcon from '../../icons/delete.svg';
 import styles from './styles.css';
 
@@ -35,12 +35,21 @@ const Todo = ({ id, task, dueDate, priority, fullfilment, onDeleteTodo, onEditTo
 
   const handleEdit = () => onEditTodo(id);
 
+  const handleDragStart = e => {
+    e.dataTransfer.setData('text', id);
+  }
+
   const fullfillmentStyleWidth = {
     width: fullfilment
   };
 
   return (
-    <div className={styles.todo} onClick={handleEdit} role="presentation">
+    <div 
+      className={styles.todo} 
+      onClick={handleEdit} 
+      role="presentation" 
+      draggable="true"
+      onDragStart={handleDragStart} >
       <div className={priorityClass} />
       <p className={styles.text}>{task}</p>
       <div className={styles.info}>

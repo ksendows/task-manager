@@ -19,24 +19,14 @@ class Slider extends Component {
         this.timePaused = 0;
         this.timeStart = null;
         this.timePauseStart = null;
-        this.bar = React.createRef();
-        this.width = 1;
-        this.barInterval = 10;
-        this.step = (100 + this.barInterval) / (this.time / this.barInterval);
-        this.barTimerId = null;
-
-        this.animateBar = this.animateBar.bind(this);
         this.controlSlide = this.controlSlide.bind(this);
         this.pause = this.pause.bind(this);
         this.run = this.run.bind(this);
     }
 
     componentDidMount() {
-        setTimeout(() => {
-            this.sliderTimerId = setTimeout(this.controlSlide, this.time);
-            this.timeStart = new Date();    
-        }, 0);
-        this.animateBar();   
+        this.sliderTimerId = setTimeout(this.controlSlide, this.time);
+        this.timeStart = new Date(); 
     }
 
     componentWillUnmount () {
@@ -54,20 +44,10 @@ class Slider extends Component {
 
             this.timePassed = 0;
             this.timePaused = 0;
-            this.width = 1;
         }, 200);
         this.sliderTimerId = setTimeout(() => {
             currentSlide.style.display = "none";
         }, 600);
-    }
-
-    animateBar() {
-        this.bar.current.style.width = `${this.width}%`;
-        this.width += this.step;
-        if (this.width > 100) {
-            this.width = 1;
-        }
-        this.barTimerId = setTimeout(this.animateBar, this.barInterval);
     }
 
     controlSlide () {
@@ -84,7 +64,6 @@ class Slider extends Component {
 
     pause () {
         clearInterval(this.sliderTimerId);
-        clearInterval(this.barTimerId);
         this.timePauseStart = new Date();
         this.timePassed = this.timePauseStart - this.timeStart - this.timePaused;
     }
@@ -93,10 +72,8 @@ class Slider extends Component {
         if (this.timePassed > 0 && this.timePassed < this.time) {
             this.timePaused += (new Date() - this.timePauseStart);
             this.sliderTimerId = setTimeout(this.controlSlide, this.time - this.timePassed);
-            this.animateBar();
         } else {
             this.controlSlide();
-            this.animateBar();
         }
     }
 
@@ -113,12 +90,11 @@ class Slider extends Component {
                         <div className={styles.slide5} ref={this.slide5} />
                 </div>
             </div>
-                <div className={styles.text_wrapper}>
-                    <Link to="/login" className={styles.text} onMouseOver={this.pause} onMouseOut={this.run}>
-                        Please log-in to start using task manager.
-                    </Link>
-                </div>
-                <div className={styles.bar} ref={this.bar} />
+            <div className={styles.text_wrapper}>
+                <Link to="/login" className={styles.text} onMouseOver={this.pause} onMouseOut={this.run}>
+                    Please log-in to start using task manager.
+                </Link>
+            </div>
         </Fragment>
         )
     }

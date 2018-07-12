@@ -36,8 +36,13 @@ const INITIAL_STATE = {
 export default class LoginForm extends Component {
   static propTypes = {
     type: PropTypes.oneOf(['login', 'register']).isRequired,
-    onLogin: PropTypes.func.isRequired,
-    onRegister: PropTypes.func.isRequired
+    onLogin: PropTypes.func,
+    onRegister: PropTypes.func
+  };
+
+  static defaultProps ={
+    onLogin: () => {},
+    onRegister: () => {}
   };
 
   constructor(props) {
@@ -57,7 +62,8 @@ export default class LoginForm extends Component {
       return "Password is too short and login is not an email"
     if (this.state.isRegisterForm) {
       Object.keys(this.state.isValid).forEach(field => {
-        if (!this.state.isValid[field].fieldIsValid) errorMessage = this.state.isValid[field].error
+        if (!this.state.isValid[field].fieldIsValid) 
+          errorMessage = this.state.isValid[field].error;
       });
       return errorMessage;
     }
@@ -137,6 +143,7 @@ export default class LoginForm extends Component {
     const { validationPassed, error } = validateFields(name, value);
   
     this.setState({ 
+      // true попробовать !!!!!!!!!!!
       isValidating: name === "login" || name === "password",
       user: {
         ...this.state.user,

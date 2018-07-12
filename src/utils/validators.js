@@ -1,13 +1,3 @@
-/*eslint-disable*/
-//     case 'email':
-// emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-// fieldValidationErrors.email = emailValid ? '' : ' is invalid';
-// break;
-//     case 'password':
-// passwordValid = value.length >= 6;
-// fieldValidationErrors.password = passwordValid ? '' : ' is too short';
-// break;
-
 const validatePassword = (password) => {
     const result = password.length < 6 
     ? {
@@ -48,21 +38,46 @@ const validateName = (name) => {
 }
 
 const validateTask = (task) => {
-    if (task === '') return false;
-    return true;
+    const result = task === ""
+        ? {
+            validationPassed: false,
+            error: 'Please enter task'
+        }
+        : {
+            validationPassed: true,
+            error: ''
+        }
+    return result;
 }
 
 const validateFullfilment = (fullfilment) => {
-    if (!/^\d{1,3}$/.test(fullfilment)) return false;
-    if (fullfilment < 0 || fullfilment > 100) return false;
-    return true;
+    const test = /^\d{1,3}$/.test(fullfilment);
+    const result = test && fullfilment >= 0 && fullfilment <= 100
+        ? {
+            validationPassed: true,
+            error: ''
+        }
+        : {
+            validationPassed: false,
+            error: 'Fullfilment should be an integer number from 0 to 100'
+        }
+    return result;
 }
 
 const validateDate = (dateString) => {
     const parsedDate = new Date(dateString);
     const year = parsedDate.getFullYear();
-    return (!(isNaN(year) || year < 2000 || year > 2100));
-};
+    const result = (!isNaN(year) && year >= 2000 && year <= 2100)
+        ? {
+            validationPassed: true,
+            error: ''
+        }
+        : {
+            validationPassed: false,
+            error: 'Invalid date'
+        }
+    return result;
+}
 
 const validateFields = (name, value) => {
     switch (name) {

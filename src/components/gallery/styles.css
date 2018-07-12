@@ -2,13 +2,13 @@
 
 .container {
   position: absolute;
+  z-index: 20;
   top: 0;
   right: 0;
+  transform: translate(100%, 0%);
   width: 88vw;
   padding: 5px 10px;
   background-color: primary-color-solid;
-  z-index: 20;
-  transform: translate(100%, 0%);
   transition: transform 200ms linear;
 }
 
@@ -29,9 +29,9 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  overflow: scroll;
   height: 80vh;
   padding: 20px;
-  overflow: scroll;
 }
 
 .item {

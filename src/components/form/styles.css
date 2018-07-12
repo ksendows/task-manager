@@ -46,6 +46,13 @@
   height: 24px;
 }
 
+.error {
+  min-height: 0.9rem;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: red;
+}
+
 @media screen and (max-width: 480px) {
   .date_input {
     width: 125px;

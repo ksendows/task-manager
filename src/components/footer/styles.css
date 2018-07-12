@@ -25,6 +25,7 @@
 .info {
   display: block;
   color: font-color;
+  font-style: normal;
   text-decoration: none;
 }
 

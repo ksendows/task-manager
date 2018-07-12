@@ -5,12 +5,12 @@
 }
 
 .wrapper {
-  width: 100vw;
-  height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
   overflow: hidden;
+  width: 100vw;
+  height: 100vh;
 }
 
 .slide {
@@ -53,55 +53,35 @@
 
 .slide5 {
   composes: slide;
-  background-image: url('../gallery/backgrounds/photo4.jpg');
-}
-
-.bar {
-  position: absolute;
-  left: 0;
-  bottom: 133px;
-  height: 7px;
-  width: 0%;
-  background-color: darkgrey;
-  opacity: 0.7;
+  background-image: url('../gallery/backgrounds/photo3.jpg');
 }
 
 .text_wrapper {
+  position: absolute;
+  top: 40vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
   width: 100vw;
   margin: 0 auto;
   text-align: center;
 }
 
 .text {
-  position: absolute;
-  top: 40vh;
-  left: 50vw;
-  transform: translate(-50%, -50%);
-  width: 100%;
   color: white;
   font-size: 1.3rem;
   text-decoration: none;
+  text-shadow: 4px 4px 2px rgba(150, 150, 150, 0.5);
 }
 
-@media screen and (max-width: 880px) {
-  .bar {
-    bottom: 149px;
-  }
+.text:hover {
+  text-decoration: underline;
 }
+
 
 @media screen and (max-width: 620px) {
-  .bar {
-    bottom: 256px;
-  }
-
   .text {
     top: 30vh;
   }
 }
 
-@media screen and (max-width: 470px) {
-  .bar {
-    bottom: 244px;
-  }
-}
 

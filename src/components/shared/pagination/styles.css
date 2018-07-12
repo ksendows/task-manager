@@ -2,8 +2,8 @@
 
 .container {
   display: flex;
-  padding: 10px;
   justify-content: center;
+  padding: 10px;
   font-size: 0.9rem;
   background-color: white;
   box-shadow: box-shadow-without-top;
@@ -14,8 +14,8 @@
   justify-content: center;
   width: 24px;
   height: 24px;
-  text-align: center;
   margin-right: 4px;
+  text-align: center;
   cursor: pointer;
 }
 

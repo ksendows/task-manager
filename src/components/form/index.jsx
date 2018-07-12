@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'; 
 import { v4 } from 'uuid';
@@ -20,10 +21,20 @@ const INITIAL_STATE = {
   editablePriority: false,
   fullfilment: 0,
   isValid: {
-    task: false,
-    fullfilment: true,
-    dueDate: true
-  }
+    task: {
+      fieldIsValid: false,
+      error: ''
+    },
+    fullfilment: {
+      fieldIsValid: true,
+      error: ''
+    },
+    dueDate: {
+      fieldIsValid: true,
+      error: ''
+    }
+  },
+  isValidating: false, 
 };
 
 export default class Form extends Component {
@@ -31,8 +42,8 @@ export default class Form extends Component {
     onCloseModal: PropTypes.func.isRequired,
     onAddTodo: PropTypes.func.isRequired,
     onEditTodo: PropTypes.func.isRequired,
-    list: PropTypes.string.isRequired,
-    action: PropTypes.string.isRequired,
+    list: PropTypes.string,
+    action: PropTypes.string,
     todo: PropTypes.shape({
       id: PropTypes.string,
       task: PropTypes.string,
@@ -40,12 +51,14 @@ export default class Form extends Component {
       priority: PropTypes.string,
       dueDate: PropTypes.string,
       creationDate: PropTypes.string,
-      fullfilment: PropTypes.string
+      fullfilment: PropTypes.number
     })
   };
 
   static defaultProps = {
-    todo: INITIAL_STATE
+    todo: INITIAL_STATE,
+    list: "To do",
+    action: "add"
   };
 
   constructor(props) {
@@ -55,8 +68,12 @@ export default class Form extends Component {
     this.focusTextArea = this.focusTextArea.bind(this);
 
     const {id, task, dueDate, creationDate, status, priority, fullfilment} = props.todo;
+
     
     if (props.action === "edit") {
+      if (Number.parseInt === undefined)
+        Number.parseInt = window.parseInt;
+        
       this.state = {
         id,
         task,
@@ -68,15 +85,25 @@ export default class Form extends Component {
         editablePriority: false,
         fullfilment: Number.parseInt(fullfilment, 10),
         isValid: {
-          task: true,
-          fullfilment: true,
-          dueDate: true
-        }
+          task: {
+            fieldIsValid: true,
+            error: ''
+          },
+          fullfilment: {
+            fieldIsValid: true,
+            error: ''
+          },
+          dueDate: {
+            fieldIsValid: true,
+            error: ''
+          }
+        },
+        isValidating: false, 
       }
       return;
     }
     this.state = { ...INITIAL_STATE };
-    if (props.list) this.state.status = props.list;
+    this.state.status = props.list;
   };
 
   componentDidMount() {
@@ -93,7 +120,7 @@ export default class Form extends Component {
 
   isValidationPassed() {
     const { task, fullfilment, dueDate } = this.state.isValid;
-    return task && fullfilment && dueDate;
+    return task.fieldIsValid && fullfilment.fieldIsValid && dueDate.fieldIsValid;
   }    
 
   handleAddSubmit = e => {
@@ -139,14 +166,29 @@ export default class Form extends Component {
   handleInputChange = e => {
     const name = e.target.name;
     const value = e.target.value;
+    const { validationPassed, error } = validateFields(name, value);
+
     this.setState({ 
       [name]: value,
+      isValidating: true,
       isValid: {
         ...this.state.isValid,
-        [name]: validateFields(name, value)
+        [name]: {
+          fieldIsValid: validationPassed,
+          error
+        }
       }
      });
   };
+
+  setErrorMessage = () => {
+    let errorMessage;
+    Object.keys(this.state.isValid).forEach(field => {
+      if (!this.state.isValid[field].fieldIsValid) 
+        errorMessage = this.state.isValid[field].error
+    });
+    return errorMessage;
+  }
 
   handleCloseModal = () => this.props.onCloseModal();
 
@@ -231,6 +273,8 @@ export default class Form extends Component {
             </label>
           </div>
         </div>
+
+        <div className={styles.error}>{this.setErrorMessage()}</div>
 
         <div className={styles.columns_container}>
           <div className={styles.column}>

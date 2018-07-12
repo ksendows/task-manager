@@ -8,6 +8,7 @@ import Slider from '../slider';
 import Button from '../shared/button';
 import Footer from '../footer';
 import Header from '../header';
+import Submenu from '../submenu';
 import Form from "../form";
 import Settings from '../settings';
 import { getVisibleTodos } from "../../utils/selectors";
@@ -23,7 +24,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      isAuthenticated: false,
+      isAuthenticated: true,
       todos: data.todos,
       search: '',
       priorityFilter: 'all',
@@ -34,14 +35,20 @@ class App extends Component {
         activeList: 'todo',
       },
       showMap: false,
-      showSettings: false
+      showSettings: false,
+      showAuthSubmenu: false
     };
+  }
+
+  componentDidMount = () => {
+    if (localStorage.getItem('background'))
+      document.body.style.backgroundImage = `url(${localStorage.getItem('background')})`;;
   }
 
   handleOpenAddModal = e => {
     const list = e.target.parentNode.firstChild.firstChild.textContent;
     const activeList = list === "+" ? "To do" : list;
-    this.handleCloseSettings();
+    this.handleCloseSubmenu();
     this.setState({ 
       modal: {
         showModal: true,
@@ -57,7 +64,7 @@ class App extends Component {
    });
 
   handleOpenEditModal = (id) => {
-    this.handleCloseSettings();
+    this.handleCloseSubmenu();
     this.setState(prevState => ({
       showSettings: false,
       modal: {
@@ -90,11 +97,22 @@ class App extends Component {
         todo => (todo.id === updatedTodo.id ? { ...updatedTodo } : todo),
   )}));
 
+  handleDropTodo = (id, newList) => this.setState(
+    prevState => ({
+      todos: prevState.todos.map(todo => (todo.id === id 
+          ? { ...todo,
+              status: newList 
+            } 
+          : todo),
+      )
+    }));
+
   handleShowMap = () => {
-    this.handleCloseSettings();
+    this.handleCloseSubmenu();
     this.setState({ 
       showMap: true,
-      showSettings: false
+      showSettings: false,
+      showAuthSubmenu: false
     });
   };
 
@@ -107,8 +125,31 @@ class App extends Component {
       this.handleCloseSettings();
     } else {
       this.setState({ showSettings: true });
+      this.handleCloseAuthSubmenu();
     }
   };
+
+  handleCloseSettings = () => {
+    this.setState({ showSettings: false });
+  };
+
+  handleOpenAuthSubmenu = () => {
+    if (this.state.showAuthSubmenu) {
+      this.handleCloseAuthSubmenu();
+    } else {
+      this.setState({ showAuthSubmenu: true });
+      this.handleCloseSettings();
+    }
+  };
+
+  handleCloseAuthSubmenu = () => {
+    this.setState({ showAuthSubmenu: false });
+  };
+
+  handleCloseSubmenu = () => {
+    this.handleCloseSettings();
+    this.handleCloseAuthSubmenu();
+  }
 
   handleLogin = (user) => {
     const reply = signIn(user);
@@ -126,15 +167,14 @@ class App extends Component {
     return reply;
   }
 
-  handleLogout = () => this.setState({ isAuthenticated: false });
-
-  handleCloseSettings = () => {
-      this.setState({ showSettings: false }); 
-  };
+  handleLogout = () => {
+    this.setState({ isAuthenticated: false });
+    this.handleCloseAuthSubmenu();
+  }
 
   render() {
 
-    const { priorityFilter, search, modal, showMap, showSettings, isAuthenticated } = this.state;
+    const { priorityFilter, search, modal, showMap, showSettings, isAuthenticated, showAuthSubmenu } = this.state;
     const { showModal, activeTodo, modalAction, activeList } = modal;
  
     const visibleTodos = getVisibleTodos(this.state, "To do");
@@ -161,8 +201,9 @@ class App extends Component {
                   currentFilter={priorityFilter}
                   onAddTodo={this.handleOpenAddModal}
                   onOpenSettings={this.handleOpenSettings}
-                  onLogout={this.handleLogout}/>
+                  onAuthSubmenuOpen={this.handleOpenAuthSubmenu}/>
                 <main className={mainStyle}> 
+                  {showAuthSubmenu && <Submenu onLogout={this.handleLogout} onCloseSubmenu={this.handleCloseAuthSubmenu}/>}
                   {showSettings && <Settings onCloseSettings={this.handleCloseSettings} />}
                   {isAuthenticated && <MainPage 
                         {...props} 
@@ -172,7 +213,8 @@ class App extends Component {
                         visibleFinished={visibleFinished}
                         onDeleteTodo={this.deleteTodo}
                         onEditTodo={this.handleOpenEditModal}
-                        onAddTodo={this.handleOpenAddModal} />
+                        onAddTodo={this.handleOpenAddModal} 
+                        onDropTodo={this.handleDropTodo} />
                   }
               </main>
               <Footer onShowMap={this.handleShowMap} />

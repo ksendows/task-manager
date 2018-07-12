@@ -13,9 +13,17 @@ const getGalleryItemStyle = (image) => ({
 const changeBackground = (e) => {
     const cssProperty = e.target.style.backgroundImage;
     const selectedImage = cssProperty.match(/photo\d{1,}/);
-    const newBackground = backgrounds.find((imageObject) => imageObject.name === selectedImage[0]);
+
+    let newBackground = null;
+    for (let i = 0; i < backgrounds.length; i += 1) {
+        if (backgrounds[i].name === selectedImage[0]) {
+            newBackground = backgrounds[i];
+            break;
+        }
+    };
 
     document.body.style.backgroundImage = `url(${newBackground.url_big})`;
+    localStorage.setItem('background', newBackground.url_big);
 }
 
 const Gallery = React.forwardRef((props, ref) => (
@@ -32,7 +40,8 @@ const Gallery = React.forwardRef((props, ref) => (
                     style={getGalleryItemStyle(background.url_small)} 
                     className={styles.item} 
                     onClick={changeBackground}
-                    role="presentation"/>
+                    role="presentation"
+                    key={background.url_small}/>
             ))}
         </div>
     </div>

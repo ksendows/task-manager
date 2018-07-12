@@ -47,18 +47,25 @@ export default class Sorting extends Component {
         };
     };
 
-    handleShowSortOptions = () => this.setState(prevState => ({
-        isOpen: !prevState.isOpen
-    }));
+    handleShowSortOptions = () => {
+        this.setState({ isOpen: true});
+        document.addEventListener('click', this.handleCloseSortOptions, false);
+    };
+
+    handleCloseSortOptions = () => {
+        this.setState({ isOpen: false });
+        document.removeEventListener('click', this.handleCloseSortOptions, false);
+    }
 
     handelSort = (e) => {
         const option = e.target.textContent;
         const method = getMethodFromSortOption(option);
         this.setState({ 
             sortBy: method.sortBy,
-            direction: method.direction
+            direction: method.direction,
          });
         this.props.onSort(method);
+        this.handleCloseSortOptions();
     }
 
     render () {
@@ -70,7 +77,7 @@ export default class Sorting extends Component {
 
                         <div className={styles.header}>
                             <p className={styles.title}>Sort by:</p>
-                            <Button onClick={this.handleShowSortOptions} type="icon">
+                            <Button onClick={this.handleCloseSortOptions} type="icon">
                                 <img src={closeIcon} alt="" className={styles.iconClose} />
                             </Button>
                         </div>
@@ -78,9 +85,20 @@ export default class Sorting extends Component {
                         {sortingOptions.map(option => {
                             const { sortBy, direction } = getMethodFromSortOption(option);
                             if (sortBy === this.state.sortBy && direction === this.state.direction) {
-                                return (<Button onClick={this.handelSort} type="listLinkActive" className={styles.a}>{option}</Button>)
+                                return (<Button 
+                                            onClick={this.handelSort} 
+                                            type="listLinkActive" 
+                                            className={styles.a} 
+                                            key={sortBy+direction}>
+                                                {option}
+                                            </Button>)
                             }
-                            return (<Button onClick={this.handelSort} type="listLink">{option}</Button>)
+                            return (<Button 
+                                        onClick={this.handelSort} 
+                                        type="listLink" 
+                                        key={sortBy+direction}>
+                                            {option}
+                                        </Button>)
                         })}
                     </div>
                 }
