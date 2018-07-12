@@ -24,7 +24,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      isAuthenticated: true,
+      isAuthenticated: false,
       todos: data.todos,
       search: '',
       priorityFilter: 'all',

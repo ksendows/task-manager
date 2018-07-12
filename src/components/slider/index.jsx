@@ -24,12 +24,12 @@ class Slider extends Component {
         this.run = this.run.bind(this);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.sliderTimerId = setTimeout(this.controlSlide, this.time);
         this.timeStart = new Date(); 
     }
 
-    componentWillUnmount () {
+    componentDidUnmount () {
         this.pause();
     }
 
